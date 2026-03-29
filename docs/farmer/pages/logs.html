@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Production Logs - IntelliSwine</title>
+  <meta name="description" content="Production weigh-ins and mortality event logs for IntelliSwine." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../../css/styles.css" />
+  <link rel="stylesheet" href="../../css/dashboard.css" />
+  <link rel="stylesheet" href="../../css/components/card.css" />
+  <link rel="stylesheet" href="../../css/components/forms.css" />
+  <link rel="stylesheet" href="../../css/components/toast.css" />
+  <link rel="stylesheet" href="../../css/components/batch-modal.css" />
+</head>
+<body class="dashboard-page">
+  <!-- Navbar component container -->
+  <div id="navbar-container"></div>
+
+  <div class="dashboard-layout">
+    <!-- Sidebar component container -->
+    <div id="sidebar-container"></div>
+
+    <main class="dashboard-main">
+      <div class="dashboard-header">
+        <div>
+          <h2>Production Logs</h2>
+          <p>Log weigh-ins as needed and record mortality events when they occur</p>
+        </div>
+        <div class="log-actions">
+          <button class="btn btn-primary" type="button" data-log-modal="weightModal">
+            <i class="fas fa-weight-scale"></i>
+            Add Weight
+          </button>
+          <button class="btn btn-secondary" type="button" data-log-modal="mortalityModal">
+            <i class="fas fa-heartbeat"></i>
+            Record Mortality
+          </button>
+        </div>
+      </div>
+
+      <div class="log-summary-grid">
+        <div class="dashboard-card log-summary-card">
+          <div class="log-summary-header">
+            <h4>Weight Progress</h4>
+            <span class="log-trend up">+1.6 kg</span>
+          </div>
+          <p class="log-summary-value">62.8 kg avg</p>
+          <p class="log-summary-sub">Last 7 days • Goal 110 kg</p>
+        </div>
+        <div class="dashboard-card log-summary-card">
+          <div class="log-summary-header">
+            <h4>Mortality</h4>
+            <span class="log-trend neutral">0 this week</span>
+          </div>
+          <p class="log-summary-value">0.2%</p>
+          <p class="log-summary-sub">30-day rolling rate</p>
+        </div>
+        <div class="dashboard-card log-summary-card">
+          <div class="log-summary-header">
+            <h4>Latest Entry</h4>
+            <span class="log-trend">Day 38</span>
+          </div>
+          <p class="log-summary-value">Weighing & Mortality</p>
+          <p class="log-summary-sub">Recorded 2 hours ago</p>
+        </div>
+      </div>
+
+      <div class="log-record-grid">
+        <div class="dashboard-card">
+          <div class="dashboard-card-header">
+            <h4>Weighing Records</h4>
+            <span class="status-pill">Recent</span>
+          </div>
+          <div class="log-records">
+            <div class="log-record-card">
+              <div class="log-record-meta">
+                <span class="log-type-badge weight">Weighing</span>
+                <span class="log-date">Day 38 • 08:20</span>
+              </div>
+              <h5>62.8 kg average</h5>
+              <p>+1.2 kg from last week • 110 pigs sampled</p>
+            </div>
+            <div class="log-record-card">
+              <div class="log-record-meta">
+                <span class="log-type-badge weight">Weighing</span>
+                <span class="log-date">Day 31 • 08:10</span>
+              </div>
+              <h5>61.6 kg average</h5>
+              <p>Stable gain • 108 pigs sampled</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="dashboard-card">
+          <div class="dashboard-card-header">
+            <h4>Mortality Records</h4>
+            <span class="status-pill">Recent</span>
+          </div>
+          <div class="log-records">
+            <div class="log-record-card">
+              <div class="log-record-meta">
+                <span class="log-type-badge mortality">Mortality</span>
+                <span class="log-date">Day 36 • 09:10</span>
+              </div>
+              <h5>1 pig</h5>
+              <p>Suspected heat stress • Pen B3</p>
+            </div>
+            <div class="log-record-card log-record-empty">
+              <h5>No new mortality this week</h5>
+              <p>Keep monitoring and log if issues appear.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Weight Modal -->
+  <div class="batch-modal" id="weightModal" aria-hidden="true">
+    <div class="batch-modal-overlay" data-modal-close></div>
+    <div class="batch-modal-content" role="dialog" aria-modal="true" aria-labelledby="weightModalTitle">
+      <div class="batch-modal-header">
+        <div>
+          <h3 id="weightModalTitle">Add Weighing</h3>
+          <p>Record average weight and sampling notes.</p>
+        </div>
+        <button class="batch-modal-close" type="button" data-modal-close aria-label="Close">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <form class="batch-modal-body" autocomplete="off">
+        <div class="modal-fields">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label required" for="weightDate">Date</label>
+              <input class="form-input" id="weightDate" type="date" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label required" for="weightAvg">Average weight (kg)</label>
+              <input class="form-input" id="weightAvg" type="number" min="0" step="0.1" placeholder="62.8" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="weightSample">Sample count</label>
+              <input class="form-input" id="weightSample" type="number" min="0" step="1" placeholder="110" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="weightNotes">Notes</label>
+              <input class="form-input" id="weightNotes" type="text" placeholder="Optional notes" />
+            </div>
+          </div>
+        </div>
+        <div class="batch-modal-footer">
+          <button class="btn btn-secondary" type="button" data-modal-close>Cancel</button>
+          <button class="btn btn-primary" type="button">
+            <i class="fas fa-save"></i>
+            Save Weighing
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Mortality Modal -->
+  <div class="batch-modal" id="mortalityModal" aria-hidden="true">
+    <div class="batch-modal-overlay" data-modal-close></div>
+    <div class="batch-modal-content" role="dialog" aria-modal="true" aria-labelledby="mortalityModalTitle">
+      <div class="batch-modal-header">
+        <div>
+          <h3 id="mortalityModalTitle">Record Mortality</h3>
+          <p>Log mortality details and potential cause.</p>
+        </div>
+        <button class="batch-modal-close" type="button" data-modal-close aria-label="Close">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <form class="batch-modal-body" autocomplete="off">
+        <div class="modal-fields">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label required" for="mortalityDate">Date</label>
+              <input class="form-input" id="mortalityDate" type="date" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label required" for="mortalityCount">Count</label>
+              <input class="form-input" id="mortalityCount" type="number" min="0" step="1" placeholder="1" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="mortalityPen">Pen / Location</label>
+              <input class="form-input" id="mortalityPen" type="text" placeholder="Pen B3" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="mortalityCause">Suspected cause</label>
+              <input class="form-input" id="mortalityCause" type="text" placeholder="Heat stress" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="mortalityNotes">Notes</label>
+            <textarea class="form-input form-textarea" id="mortalityNotes" rows="3" placeholder="Optional notes"></textarea>
+          </div>
+        </div>
+        <div class="batch-modal-footer">
+          <button class="btn btn-secondary" type="button" data-modal-close>Cancel</button>
+          <button class="btn btn-primary" type="button">
+            <i class="fas fa-save"></i>
+            Save Mortality
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Utilities and Components -->
+  <script src="../../js/utils/messages.js"></script>
+  <script src="../../js/utils/dom.js"></script>
+  <script src="../../js/utils/validators.js"></script>
+  <script src="../../js/auth/auth-storage.js"></script>
+  <script src="../../js/auth/auth-router.js"></script>
+  <script src="../../js/utils/api.js"></script>
+  <script src="../../js/utils/ui.js"></script>
+  <script src="../../js/main.js"></script>
+  <script src="../../js/farmer/dashboard.js"></script>
+
+  <!-- Component System -->
+  <script src="../../js/farmer/component-loader.js"></script>
+  <script src="../../js/components/form-handler.js"></script>
+  <script src="../../js/components/navbar.js"></script>
+  <script src="../../js/components/sidebar.js"></script>
+  <script src="../../js/components/card.js"></script>
+
+  <!-- Page Initialization -->
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      // Require authentication
+      AppAuthRouter.requireAuth();
+      
+      // Load components
+      await window.AppComponentLoader.injectComponent('#navbar-container', '../../farmer/components/navbar.html');
+      await window.AppComponentLoader.injectComponent('#sidebar-container', '../../farmer/components/sidebar.html');
+      
+      // Initialize components
+      if (window.AppNavbar) window.AppNavbar.init();
+      if (window.AppSidebar) window.AppSidebar.init();
+      if (window.AppCard) window.AppCard.init();
+
+      const updateBodyScrollLock = () => {
+        const hasActiveModal = Boolean(document.querySelector('.batch-modal.active'));
+        document.body.classList.toggle('modal-open', hasActiveModal);
+      };
+
+      const modalTriggers = document.querySelectorAll('[data-log-modal]');
+      modalTriggers.forEach((trigger) => {
+        trigger.addEventListener('click', () => {
+          const targetId = trigger.getAttribute('data-log-modal');
+          const modal = document.getElementById(targetId);
+          if (modal) {
+            modal.classList.add('active');
+            modal.setAttribute('aria-hidden', 'false');
+            updateBodyScrollLock();
+          }
+        });
+      });
+
+      document.querySelectorAll('.batch-modal').forEach((modal) => {
+        modal.addEventListener('click', (event) => {
+          if (event.target.hasAttribute('data-modal-close')) {
+            modal.classList.remove('active');
+            modal.setAttribute('aria-hidden', 'true');
+            updateBodyScrollLock();
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

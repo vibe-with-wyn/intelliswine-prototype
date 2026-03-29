@@ -1,0 +1,419 @@
+/* Batch Modal Container */
+.batch-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2000;
+}
+
+.batch-modal.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Modal Overlay */
+.batch-modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 0;
+}
+
+/* Modal Content */
+.batch-modal-content {
+  position: relative;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  max-width: 700px;
+  width: 90%;
+  max-height: 90vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Modal Header */
+.batch-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+  border-bottom: 1px solid #f0f0f0;
+  background: white;
+  flex-shrink: 0;
+}
+
+.batch-modal-header h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.batch-modal-close {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #999;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.batch-modal-close:hover {
+  background: #f5f5f5;
+  color: #1a1a1a;
+}
+
+/* Modal Body + Footer */
+.batch-modal-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+
+.batch-modal-footer {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  padding: 20px 24px 24px;
+  border-top: 1px solid #f0f0f0;
+  background: white;
+  flex-shrink: 0;
+}
+
+/* Farm Setup Modal */
+.farm-setup-modal .batch-modal-content {
+  max-width: 520px;
+}
+
+.farm-setup-message {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.farm-setup-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(22, 163, 74, 0.12);
+  color: #16a34a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.farm-setup-title {
+  margin: 0 0 6px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.farm-setup-subtitle {
+  margin: 0;
+  font-size: 14px;
+  color: #64748b;
+}
+
+/* Batch Form */
+.batch-form {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+
+.modal-fields {
+  padding: 24px 24px 16px;
+  overflow-y: auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-section {
+  margin-bottom: 12px;
+}
+
+.form-section:last-of-type {
+  margin-bottom: 0;
+}
+
+.form-section h4 {
+  margin: 0 0 16px 0;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #666;
+  letter-spacing: 0.5px;
+}
+
+/* Form Group */
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.form-row .form-group {
+  margin-bottom: 0;
+}
+
+/* Form Label */
+.form-label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #333;
+}
+
+.form-label::after {
+  content: " *";
+  color: #d32f2f;
+}
+
+.form-label.optional::after {
+  content: "";
+  color: #d32f2f;
+}
+
+/* Form Input & Select */
+.form-input {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-family: inherit;
+  transition: all 0.2s ease;
+  background: white;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #16a34a;
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.1);
+  background: white;
+}
+
+.form-input::placeholder {
+  color: #999;
+}
+
+.form-input:disabled {
+  background: #f5f5f5;
+  color: #999;
+  cursor: not-allowed;
+}
+
+/* Select specific */
+.form-input[type="date"],
+.form-input[type="number"] {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Form Actions */
+.form-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  padding: 16px 24px 24px;
+  border-top: 1px solid #f0f0f0;
+  background: white;
+  flex-shrink: 0;
+}
+
+/* Button Overrides for Modal */
+.batch-form .btn {
+  padding: 10px 24px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.batch-modal .btn-primary {
+  background: var(--primary-600);
+  color: white;
+}
+
+.batch-modal .btn-primary:hover {
+  background: var(--primary-700);
+}
+
+.batch-modal .btn-secondary {
+  background: var(--primary-50);
+  color: var(--primary-700);
+  border: 1px solid var(--primary-200);
+}
+
+.batch-modal .btn-secondary:hover {
+  background: var(--primary-100);
+  border-color: var(--primary-300);
+}
+
+.batch-modal .btn-success {
+  background: var(--primary-700);
+  color: white;
+}
+
+.batch-modal .btn-success:hover {
+  background: var(--primary-800);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .batch-modal-content {
+    max-width: 95%;
+    max-height: 95vh;
+  }
+
+  .batch-modal-header {
+    padding: 20px;
+  }
+
+  .batch-form {
+    padding: 20px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .batch-modal-header h3 {
+    font-size: 18px;
+  }
+
+  .batch-modal-footer {
+    flex-direction: column;
+  }
+
+  .batch-modal-footer .btn {
+    width: 100%;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .form-actions .btn {
+    width: 100%;
+  }
+}
+
+/* Loading State */
+.batch-form.is-loading .form-input,
+.batch-form.is-loading select {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.batch-form.is-loading .form-actions .btn {
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* Success Message */
+.batch-success-message {
+  display: none;
+  padding: 16px;
+  margin-bottom: 16px;
+  background: rgba(22, 163, 74, 0.1);
+  border-left: 4px solid #16a34a;
+  border-radius: 6px;
+  color: #15803d;
+  font-size: 14px;
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.batch-success-message.show {
+  display: block;
+}
+
+/* Error State */
+.form-input.error {
+  border-color: #d32f2f;
+  background: rgba(211, 47, 47, 0.02);
+}
+
+.form-input.error:focus {
+  box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.1);
+}
+
+.form-error {
+  display: none;
+  margin-top: 4px;
+  font-size: 12px;
+  color: #d32f2f;
+}
+
+.form-error.show {
+  display: block;
+}
+
+

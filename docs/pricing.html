@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pricing — IntelliSwine</title>
+  <meta name="description" content="Practical plans for grower-to-finisher farms. Start your free trial with task-driven tools and growth projection." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/pricing.css" />
+  <link rel="stylesheet" href="css/components/toast.css" />
+</head>
+<body>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav class="navbar scrolled" id="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="13" rx="9" ry="8"/><circle cx="9" cy="11" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="11" r="1" fill="currentColor" stroke="none"/><ellipse cx="12" cy="15.5" rx="3" ry="2"/><circle cx="10.5" cy="15.5" r="0.7" fill="currentColor" stroke="none"/><circle cx="13.5" cy="15.5" r="0.7" fill="currentColor" stroke="none"/><path d="M4 8c-1-3 1-5 3-4"/><path d="M20 8c1-3-1-5-3-4"/></svg></div>
+        IntelliSwine
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="features.html">Features</a>
+        <a href="pricing.html" class="active">Pricing</a>
+        <a href="index.html#how-it-works">How It Works</a>
+        <a href="index.html#testimonials">Testimonials</a>
+      </div>
+      <div class="nav-actions" id="navActions">
+        <a href="login.html" class="btn btn-ghost">Log In</a>
+        <a href="register.html" class="btn btn-primary">Get Started</a>
+      </div>
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+
+  <!-- ========== PRICING HERO ========== -->
+  <section class="pricing-hero">
+    <div class="pricing-hero-bg">
+      <div class="hero-orb hero-orb-1"></div>
+      <div class="hero-orb hero-orb-2"></div>
+    </div>
+    <div class="container">
+      <div class="section-header" style="margin-bottom: 2rem;">
+        <span class="badge badge-dot" style="margin-bottom: 1rem;">Simple Pricing</span>
+        <h1 class="text-display">Plans That Fit<br/><span class="gradient-text">Real Farm Work</span></h1>
+        <p class="text-body-lg">Start free for 14 days. No credit card required. Choose the plan that matches your batch size.</p>
+      </div>
+
+      <!-- Billing Toggle -->
+      <div class="billing-toggle">
+        <span class="billing-label" id="monthlyLabel">Monthly</span>
+        <label class="toggle-switch">
+          <input type="checkbox" id="billingToggle" onchange="toggleBilling()" />
+          <span class="toggle-slider"></span>
+        </label>
+        <span class="billing-label" id="annualLabel">Annual</span>
+        <span class="badge badge-accent" style="font-size: 0.7rem;">Save 20%</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PRICING CARDS ========== -->
+  <section class="pricing-cards-section">
+    <div class="container">
+      <div class="pricing-grid">
+
+        <!-- Starter Plan -->
+        <div class="pricing-card animate-on-scroll stagger-1">
+          <div class="pricing-card-header">
+            <span class="pricing-plan-name">Starter</span>
+            <span class="pricing-plan-desc">For backyard and pilot batches</span>
+            <div class="pricing-price">
+              <span class="price-currency">₱</span>
+              <span class="price-amount" data-monthly="0" data-annual="0">0</span>
+              <span class="price-period">/month</span>
+            </div>
+            <span class="pricing-price-note">Free forever</span>
+          </div>
+          <div class="pricing-card-body">
+            <a href="register.html" class="btn btn-secondary btn-lg w-full">Get Started Free</a>
+            <div class="pricing-features-list">
+              <div class="pricing-feature">
+                <span class="feature-check">✓</span>
+                <span>Up to <strong>20 pigs</strong> tracked</span>
+              </div>
+              <div class="pricing-feature">
+                <span class="feature-check">✓</span>
+                <span>Daily task checklist</span>
+              </div>
+              <div class="pricing-feature">
+                <span class="feature-check">✓</span>
+                <span>Feed, weight, and mortality logs</span>
+              </div>
+              <div class="pricing-feature">
+                <span class="feature-check">✓</span>
+                <span>Basic Gompertz growth projection</span>
+              </div>
+              <div class="pricing-feature">
+                <span class="feature-check">✓</span>
+                <span>Offline-first with auto sync</span>
+              </div>
+              <div class="pricing-feature disabled">
+                <span class="feature-x">✗</span>
+                <span>Efficiency metrics (ADG/FCR/ADFI/EFI)</span>
+              </div>
+              <div class="pricing-feature disabled">
+                <span class="feature-x">✗</span>
+                <span>Rule-based alerts</span>
+              </div>
+              <div class="pricing-feature disabled">
+                <span class="feature-x">✗</span>
+                <span>Market readiness estimate</span>
+              </div>
+              <div class="pricing-feature disabled">
+                <span class="feature-x">✗</span>
+                <span>Photo proof (Phase 2)</span>
+              </div>
+              <div class="pricing-feature disabled">
+                <span class="feature-x">✗</span>
+                <span>Priority support</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Professional Plan -->
+        <div class="pricing-card pricing-card-featured animate-on-scroll stagger-2">
+          <div class="pricing-card-badge">Most Popular</div>
+          <div class="pricing-card-header">
+            <span class="pricing-plan-name">Professional</span>
+            <span class="pricing-plan-desc">For growing farms that need full analytics</span>
+            <div class="pricing-price">
+              <span class="price-currency">₱</span>
+              <span class="price-amount" data-monthly="1,499" data-annual="1,199">1,499</span>
+              <span class="price-period">/month</span>
+            </div>
+            <span class="pricing-price-note">Billed <span class="billing-period-text">monthly</span></span>
+          </div>
+          <div class="pricing-card-body">
+            <a href="register.html" class="btn btn-primary btn-lg w-full">Start 14-Day Free Trial</a>
+            <div class="pricing-features-list">
+              <div class="pricing-feature">
+                <span class="feature-check featured">✓</span>
+                <span>Up to <strong>100 pigs</strong> tracked</span>
+              </div>
+              <div class="pricing-feature">
+                <span class="feature-check featured">✓</span>
+                <span>Full task generation (daily/stage/milestone)</span>
+              </div>
+              <div class="pricing-feature">
+                <span class="feature-check featured">✓</span>
+                <span><strong>Gompertz growth projection</strong></span>
+              </div>
+              <div class="pricing-feature">
+                <span class="feature-check featured">✓</span>
+                <span><strong>ADG/FCR/ADFI/EFI</strong> efficiency metrics</span>
+              </div>
+              <div class="pricing-feature">
+                <span class="feature-check featured">✓</span>
+                <span><strong>Rule-based alerts</strong> for growth, mortality, tasks</span>
+              </div>
+              <div class="pricing-feature">
+                <span class="feature-check featured">✓</span>
+                <span><strong>Market readiness</strong> estimate</span>
+              </div>
+              <div class="pricing-feature">
+                <span class="feature-check featured">✓</span>
+                <span>Offline-first with multi-device sync</span>
+              </div>
+              <div class="pricing-feature">
+                <span class="feature-check featured">✓</span>
+                <span>Photo proof (Phase 2)</span>
+              </div>
+              <div class="pricing-feature">
+                <span class="feature-check featured">✓</span>
+                <span>Email support</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Enterprise Plan -->
+        <div class="pricing-card animate-on-scroll stagger-3">
+          <div class="pricing-card-header">
+            <span class="pricing-plan-name">Enterprise</span>
+            <span class="pricing-plan-desc">For large operations and multi-farm teams</span>
+            <div class="pricing-price">
+              <span class="price-currency">₱</span>
+              <span class="price-amount" data-monthly="3,999" data-annual="3,199">3,999</span>
+              <span class="price-period">/month</span>
+            </div>
+            <span class="pricing-price-note">Billed <span class="billing-period-text">monthly</span></span>
+          </div>
+          <div class="pricing-card-body">
+            <a href="register.html" class="btn btn-secondary btn-lg w-full">Contact Sales</a>
+            <div class="pricing-features-list">
+              <div class="pricing-feature">
+                <span class="feature-check">✓</span>
+                <span><strong>Unlimited pigs</strong> tracked</span>
+              </div>
+              <div class="pricing-feature">
+                <span class="feature-check">✓</span>
+                <span>Everything in Professional</span>
+              </div>
+              <div class="pricing-feature">
+                <span class="feature-check">✓</span>
+                <span><strong>Multi-farm</strong> management</span>
+              </div>
+              <div class="pricing-feature">
+                <span class="feature-check">✓</span>
+                <span><strong>Custom task rules</strong> and workflows</span>
+              </div>
+              <div class="pricing-feature">
+                <span class="feature-check">✓</span>
+                <span>Advanced analytics and reports</span>
+              </div>
+              <div class="pricing-feature">
+                <span class="feature-check">✓</span>
+                <span>API access & integrations</span>
+              </div>
+              <div class="pricing-feature">
+                <span class="feature-check">✓</span>
+                <span>Dedicated data exports</span>
+              </div>
+              <div class="pricing-feature">
+                <span class="feature-check">✓</span>
+                <span>Team management & roles</span>
+              </div>
+              <div class="pricing-feature">
+                <span class="feature-check">✓</span>
+                <span><strong>Priority support</strong> + onboarding</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FEATURE COMPARISON TABLE ========== -->
+  <section class="section" id="compare">
+    <div class="container">
+      <div class="section-header">
+        <span class="text-overline">Detailed Comparison</span>
+        <h2 class="text-h2">Compare All Features</h2>
+        <p class="text-body-lg">See exactly what each plan includes.</p>
+      </div>
+
+      <div class="comparison-table-wrap animate-on-scroll">
+        <table class="comparison-table pricing-compare-table">
+          <thead>
+            <tr>
+              <th style="text-align:left;">Feature</th>
+              <th>Starter</th>
+              <th class="col-featured">Professional</th>
+              <th>Enterprise</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="category-row"><td colspan="4">Production Management</td></tr>
+            <tr>
+              <td>Pigs Tracked</td>
+              <td>Up to 20</td>
+              <td class="col-featured">Up to 100</td>
+              <td>Unlimited</td>
+            </tr>
+            <tr>
+              <td>Batch Setup</td>
+              <td><span class="check-yes">✓</span></td>
+              <td class="col-featured"><span class="check-yes">✓</span></td>
+              <td><span class="check-yes">✓</span></td>
+            </tr>
+            <tr>
+              <td>Task Generation</td>
+              <td>Checklist</td>
+              <td class="col-featured"><strong>Full</strong></td>
+              <td><strong>Full + Custom</strong></td>
+            </tr>
+            <tr>
+              <td>Multi-Farm Management</td>
+              <td><span class="check-no">✗</span></td>
+              <td class="col-featured"><span class="check-no">✗</span></td>
+              <td><span class="check-yes">✓</span></td>
+            </tr>
+            <tr class="category-row"><td colspan="4">Machine Learning</td></tr>
+            <tr>
+              <td>Gompertz Growth Projection</td>
+              <td><span class="check-yes">✓</span></td>
+              <td class="col-featured"><span class="check-yes">✓</span></td>
+              <td><span class="check-yes">✓</span></td>
+            </tr>
+            <tr>
+              <td>ADG / FCR / ADFI / EFI</td>
+              <td><span class="check-no">✗</span></td>
+              <td class="col-featured"><span class="check-yes">✓</span></td>
+              <td><span class="check-yes">✓</span></td>
+            </tr>
+            <tr>
+              <td>Rule-Based Alerts</td>
+              <td><span class="check-no">✗</span></td>
+              <td class="col-featured"><span class="check-yes">✓</span></td>
+              <td><span class="check-yes">✓</span></td>
+            </tr>
+            <tr>
+              <td>Market Readiness</td>
+              <td><span class="check-no">✗</span></td>
+              <td class="col-featured"><span class="check-yes">✓</span></td>
+              <td><span class="check-yes">✓</span></td>
+            </tr>
+            <tr>
+              <td>Custom Rules</td>
+              <td><span class="check-no">✗</span></td>
+              <td class="col-featured"><span class="check-no">✗</span></td>
+              <td><span class="check-yes">✓</span></td>
+            </tr>
+            <tr class="category-row"><td colspan="4">PWA & Data</td></tr>
+            <tr>
+              <td>Offline Mode (IndexedDB)</td>
+              <td><span class="check-yes">✓</span></td>
+              <td class="col-featured"><span class="check-yes">✓</span></td>
+              <td><span class="check-yes">✓</span></td>
+            </tr>
+            <tr>
+              <td>Photo Proof (Phase 2)</td>
+              <td><span class="check-no">✗</span></td>
+              <td class="col-featured"><span class="check-yes">✓</span></td>
+              <td><span class="check-yes">✓</span></td>
+            </tr>
+            <tr>
+              <td>Multi-Device Sync</td>
+              <td><span class="check-yes">✓</span></td>
+              <td class="col-featured"><span class="check-yes">✓</span></td>
+              <td><span class="check-yes">✓</span></td>
+            </tr>
+            <tr>
+              <td>API Access</td>
+              <td><span class="check-no">✗</span></td>
+              <td class="col-featured"><span class="check-no">✗</span></td>
+              <td><span class="check-yes">✓</span></td>
+            </tr>
+            <tr class="category-row"><td colspan="4">Support</td></tr>
+            <tr>
+              <td>Community Forum</td>
+              <td><span class="check-yes">✓</span></td>
+              <td class="col-featured"><span class="check-yes">✓</span></td>
+              <td><span class="check-yes">✓</span></td>
+            </tr>
+            <tr>
+              <td>Email & Chat Support</td>
+              <td><span class="check-no">✗</span></td>
+              <td class="col-featured"><span class="check-yes">✓</span></td>
+              <td><span class="check-yes">✓</span></td>
+            </tr>
+            <tr>
+              <td>Priority 24/7 Support</td>
+              <td><span class="check-no">✗</span></td>
+              <td class="col-featured"><span class="check-no">✗</span></td>
+              <td><span class="check-yes">✓</span></td>
+            </tr>
+            <tr>
+              <td>Dedicated Onboarding</td>
+              <td><span class="check-no">✗</span></td>
+              <td class="col-featured"><span class="check-no">✗</span></td>
+              <td><span class="check-yes">✓</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FAQ ========== -->
+  <section class="section section-subtle" id="faq">
+    <div class="container">
+      <div class="section-header">
+        <span class="text-overline">FAQ</span>
+        <h2 class="text-h2">Frequently Asked Questions</h2>
+        <p class="text-body-lg">Quick answers for farmers getting started.</p>
+      </div>
+
+      <div class="faq-grid">
+        <div class="faq-item animate-on-scroll stagger-1">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span>How does the 14-day free trial work?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Sign up for the Professional plan and get full access for 14 days. No credit card required. If you do not upgrade, your account switches to Starter.</p>
+          </div>
+        </div>
+
+        <div class="faq-item animate-on-scroll stagger-2">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span>Can I change plans anytime?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Yes. You can upgrade or downgrade anytime. Changes take effect right away for upgrades.</p>
+          </div>
+        </div>
+
+        <div class="faq-item animate-on-scroll stagger-3">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span>Does IntelliSwine work without internet?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Yes. All plans support offline use. Logs are saved locally and sync to the cloud when you reconnect.</p>
+          </div>
+        </div>
+
+        <div class="faq-item animate-on-scroll stagger-4">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span>What powers the growth projection?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>IntelliSwine uses the Gompertz Growth Model with your batch data to project expected weight and highlight deviations.</p>
+          </div>
+        </div>
+
+        <div class="faq-item animate-on-scroll stagger-5">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span>Do I need special hardware or sensors?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>No. A phone or tablet is enough. The system is designed for simple data entry without sensors.</p>
+          </div>
+        </div>
+
+        <div class="faq-item animate-on-scroll stagger-6">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span>How does market readiness work?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Market readiness compares projected growth against your target selling weight to estimate an expected market date.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA ========== -->
+  <section class="section cta-section">
+    <div class="container">
+      <div class="cta-card animate-on-scroll">
+        <div class="cta-bg-orbs">
+          <div class="cta-orb cta-orb-1"></div>
+          <div class="cta-orb cta-orb-2"></div>
+        </div>
+        <div class="cta-content">
+          <span class="badge badge-dark badge-dot" style="margin-bottom: 1rem;">Get Started Today</span>
+          <h2 class="text-h1" style="color: white; margin-bottom: 1rem;">Start Your Free Trial</h2>
+          <p class="text-body-lg" style="color: rgba(255,255,255,0.6); max-width: 560px; margin: 0 auto 2rem;">
+            No credit card required. Get full access to Professional features and switch plans anytime.
+          </p>
+          <div class="cta-buttons">
+            <a href="register.html" class="btn btn-primary btn-lg" style="background: white; color: var(--primary-700); box-shadow: var(--shadow-xl);">
+              Create Free Account
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo">
+            <div class="logo-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="13" rx="9" ry="8"/><circle cx="9" cy="11" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="11" r="1" fill="currentColor" stroke="none"/><ellipse cx="12" cy="15.5" rx="3" ry="2"/><circle cx="10.5" cy="15.5" r="0.7" fill="currentColor" stroke="none"/><circle cx="13.5" cy="15.5" r="0.7" fill="currentColor" stroke="none"/><path d="M4 8c-1-3 1-5 3-4"/><path d="M20 8c1-3-1-5-3-4"/></svg></div>
+            IntelliSwine
+          </a>
+          <p>Task-driven swine production management with growth projection, efficiency metrics, and offline-first data capture.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Product</h4>
+          <a href="features.html">Features</a>
+          <a href="pricing.html">Pricing</a>
+          <a href="#">Documentation</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="#">About Us</a>
+          <a href="#">Blog</a>
+          <a href="#">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Cookie Policy</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 IntelliSwine. All rights reserved.</span>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="#" aria-label="Twitter"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M4 3h4l5 7 5-7h4L15 12l8 9h-4l-5.5-7L8 21H4l8-9.5z"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg></a>
+          <a href="#" aria-label="GitHub"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/utils/messages.js"></script>
+  <script src="js/auth/auth-storage.js"></script>
+  <script src="js/auth/auth-router.js"></script>
+  <script src="js/utils/api.js"></script>
+  <script src="js/utils/ui.js"></script>
+  <script src="js/utils/toast.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    /* Billing toggle */
+    function toggleBilling() {
+      const isAnnual = document.getElementById('billingToggle').checked;
+      const amounts = document.querySelectorAll('.price-amount');
+      const periods = document.querySelectorAll('.billing-period-text');
+
+      document.getElementById('monthlyLabel').style.fontWeight = isAnnual ? '400' : '600';
+      document.getElementById('monthlyLabel').style.color = isAnnual ? 'var(--neutral-400)' : 'var(--neutral-800)';
+      document.getElementById('annualLabel').style.fontWeight = isAnnual ? '600' : '400';
+      document.getElementById('annualLabel').style.color = isAnnual ? 'var(--neutral-800)' : 'var(--neutral-400)';
+
+      amounts.forEach(el => {
+        const value = isAnnual ? el.dataset.annual : el.dataset.monthly;
+        el.textContent = value;
+      });
+
+      periods.forEach(el => {
+        el.textContent = isAnnual ? 'annually' : 'monthly';
+      });
+    }
+
+    /* FAQ toggle */
+    function toggleFaq(btn) {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      
+      document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+      
+      if (!isOpen) {
+        item.classList.add('open');
+      }
+    }
+
+    // Show toast notification if user is authenticated
+    document.addEventListener('DOMContentLoaded', () => {
+      if (AppAuthRouter.isAuthenticated()) {
+        AppToast.info('Welcome back! Continue to your dashboard.', {
+          actionText: 'Go to Dashboard',
+          onAction: () => {
+            window.location.href = 'farmer/pages/dashboard.html';
+          },
+          duration: 5000
+        });
+        
+        // Update nav buttons for authenticated users
+        const navActions = document.getElementById('navActions');
+        if (navActions) {
+          navActions.innerHTML = `
+            <a href="farmer/pages/dashboard.html" class="btn btn-primary">Dashboard</a>
+          `;
+        }
+      }
+    });
+  </script>
+</body>
+</html>

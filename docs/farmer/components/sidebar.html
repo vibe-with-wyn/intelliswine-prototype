@@ -1,0 +1,98 @@
+<!-- Sidebar Component - Reusable navigation sidebar for all dashboard pages -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <div class="sidebar-nav">
+      <!-- Main Section -->
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Main</div>
+        <a href="../pages/dashboard.html" class="sidebar-link {{ dashboardActive }}">
+          <i class="fas fa-th"></i>
+          <span>Dashboard</span>
+        </a>
+        <a href="../pages/tasks.html" class="sidebar-link {{ tasksActive }}">
+          <i class="fas fa-list-check"></i>
+          <span>Tasks</span>
+          <span class="sidebar-badge">3</span>
+        </a>
+        <a href="../pages/logs.html" class="sidebar-link {{ logsActive }}">
+          <i class="fas fa-book"></i>
+          <span>Production Logs</span>
+        </a>
+        <a href="../pages/analytics.html" class="sidebar-link {{ analyticsActive }}">
+          <i class="fas fa-chart-line"></i>
+          <span>Analytics</span>
+        </a>
+        <a href="../pages/alerts.html" class="sidebar-link {{ alertsActive }}">
+          <i class="fas fa-exclamation-circle"></i>
+          <span>Monitoring & Alerts</span>
+        </a>
+      </div>
+
+      <!-- Farm Setup Section -->
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Farm Setup</div>
+        <a href="../pages/farm-management.html" class="sidebar-link {{ farmManagementActive }}">
+          <i class="fas fa-tractor"></i>
+          <span>Farm Management</span>
+        </a>
+      </div>
+
+      <!-- Swine Management Section -->
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Swine Management</div>
+        <a href="#" class="sidebar-link">
+          <i class="fas fa-boxes"></i>
+          <span>Batches</span>
+        </a>
+        <a href="#" class="sidebar-link">
+          <i class="fas fa-stethoscope"></i>
+          <span>Health Records</span>
+        </a>
+        <a href="#" class="sidebar-link">
+          <i class="fas fa-history"></i>
+          <span>Production History</span>
+        </a>
+      </div>
+
+      <!-- Support & Settings Section -->
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Support</div>
+        <a href="../pages/settings.html" class="sidebar-link {{ settingsActive }}">
+          <i class="fas fa-gear"></i>
+          <span>Settings</span>
+        </a>
+        <a href="#" class="sidebar-link">
+          <i class="fas fa-book-open"></i>
+          <span>Documentation</span>
+        </a>
+        <a href="#" class="sidebar-link">
+          <i class="fas fa-file-lines"></i>
+          <span>Report</span>
+        </a>
+        <a href="#" class="sidebar-link">
+          <i class="fas fa-circle-question"></i>
+          <span>Help Center</span>
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Sidebar Footer -->
+    <div class="sidebar-footer">
+      <div class="sidebar-profile">
+        <div class="sidebar-profile-avatar" id="sidebarProfileAvatar">JR</div>
+        <div class="sidebar-profile-info">
+          <div class="sidebar-profile-name" id="sidebarProfileName">Juan Reyes</div>
+          <div class="sidebar-profile-email" id="sidebarProfileEmail">juan.reyes@farm.local</div>
+        </div>
+      </div>
+      <button class="btn btn-ghost sidebar-signout" id="sidebarSignOutBtn" type="button">
+        <i class="fas fa-right-from-bracket"></i>
+        Sign Out
+      </button>
+    </div>
+  </div>
+
+  <!-- Sidebar Overlay (Mobile) -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+</aside>

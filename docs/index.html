@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IntelliSwine — Intelligent Swine Production Management</title>
+  <meta name="description" content="Task-driven swine production management with Gompertz growth projection, efficiency metrics, offline-first logging, and rule-based alerts." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/landing.css" />
+  <link rel="stylesheet" href="css/components/toast.css" />
+</head>
+<body>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="13" rx="9" ry="8"/><circle cx="9" cy="11" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="11" r="1" fill="currentColor" stroke="none"/><ellipse cx="12" cy="15.5" rx="3" ry="2"/><circle cx="10.5" cy="15.5" r="0.7" fill="currentColor" stroke="none"/><circle cx="13.5" cy="15.5" r="0.7" fill="currentColor" stroke="none"/><path d="M4 8c-1-3 1-5 3-4"/><path d="M20 8c1-3-1-5-3-4"/></svg></div>
+        IntelliSwine
+      </a>
+
+      <div class="nav-links" id="navLinks">
+        <a href="index.html" class="active">Home</a>
+        <a href="features.html">Features</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#testimonials">Testimonials</a>
+      </div>
+
+      <div class="nav-actions" id="navActions">
+        <a href="login.html" class="btn btn-ghost">Log In</a>
+        <a href="register.html" class="btn btn-primary">Get Started</a>
+      </div>
+
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+
+  <!-- ========== HERO SECTION ========== -->
+  <section class="hero">
+    <div class="hero-bg">
+      <div class="hero-gradient"></div>
+      <div class="hero-grid-pattern"></div>
+      <div class="hero-orb hero-orb-1"></div>
+      <div class="hero-orb hero-orb-2"></div>
+      <div class="hero-orb hero-orb-3"></div>
+    </div>
+
+    <div class="container hero-content">
+      <div class="hero-text">
+        <div class="badge badge-dark badge-dot" style="margin-bottom: 1.5rem;">
+          Task-Driven Swine Management
+        </div>
+        <h1 class="text-display hero-title">
+          Smarter Swine Production,<br/>
+          <span class="gradient-text">Clearer Decisions</span>
+        </h1>
+        <p class="text-body-lg hero-subtitle">
+          Plan daily tasks, track feed and weight, and see Gompertz-based growth projections with practical alerts. Works offline and syncs when online.
+        </p>
+        <div class="hero-cta">
+          <a href="register.html" class="btn btn-primary btn-lg">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            Start Free Trial
+          </a>
+          <a href="features.html" class="btn btn-secondary btn-lg">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            Explore Features
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <span class="hero-stat-value">4</span>
+            <span class="hero-stat-label">Efficiency Metrics</span>
+          </div>
+          <div class="hero-stat-divider"></div>
+          <div class="hero-stat">
+            <span class="hero-stat-value">1</span>
+            <span class="hero-stat-label">Gompertz Model</span>
+          </div>
+          <div class="hero-stat-divider"></div>
+          <div class="hero-stat">
+            <span class="hero-stat-value">0</span>
+            <span class="hero-stat-label">Internet Required</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-dashboard">
+          <div class="dashboard-header">
+            <div class="dashboard-dots">
+              <span></span><span></span><span></span>
+            </div>
+            <span class="dashboard-title">IntelliSwine Dashboard</span>
+          </div>
+          <div class="dashboard-body">
+            <div class="dash-card dash-card-main">
+              <div class="dash-card-icon" style="background: rgba(34, 197, 94, 0.1); color: var(--primary-500);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg></div>
+              <div>
+                <div class="dash-card-label">Projected Weight</div>
+                <div class="dash-card-value">87.3 kg <span class="dash-trend up">↑ 2.4%</span></div>
+              </div>
+            </div>
+            <div class="dash-card">
+              <div class="dash-card-icon" style="background: rgba(59,130,246,0.1); color: var(--info);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg></div>
+              <div>
+                <div class="dash-card-label">Tasks Today</div>
+                <div class="dash-card-value">12/14</div>
+              </div>
+            </div>
+            <div class="dash-card">
+              <div class="dash-card-icon" style="background: rgba(249,115,22,0.1); color: var(--accent-500);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="13" rx="9" ry="8"/><circle cx="9" cy="11" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="11" r="1" fill="currentColor" stroke="none"/><ellipse cx="12" cy="15.5" rx="3" ry="2"/><circle cx="10.5" cy="15.5" r="0.7" fill="currentColor" stroke="none"/><circle cx="13.5" cy="15.5" r="0.7" fill="currentColor" stroke="none"/><path d="M4 8c-1-3 1-5 3-4"/><path d="M20 8c1-3-1-5-3-4"/></svg></div>
+              <div>
+                <div class="dash-card-label">Active Pigs</div>
+                <div class="dash-card-value">48</div>
+              </div>
+            </div>
+            <div class="dash-mini-chart">
+              <div class="dash-chart-header">
+                <span>Weekly Growth Trend</span>
+                <span class="dash-trend up">+12.8%</span>
+              </div>
+              <div class="dash-chart-bars">
+                <div class="dash-bar" style="height: 40%"></div>
+                <div class="dash-bar" style="height: 55%"></div>
+                <div class="dash-bar" style="height: 48%"></div>
+                <div class="dash-bar" style="height: 65%"></div>
+                <div class="dash-bar" style="height: 72%"></div>
+                <div class="dash-bar" style="height: 60%"></div>
+                <div class="dash-bar active" style="height: 85%"></div>
+              </div>
+            </div>
+            <div class="dash-alert">
+              <span class="dash-alert-dot"></span>
+              <span>Alert: Growth below expected by 8%. Check feed quality.</span>
+            </div>
+          </div>
+        </div>
+        <div class="floating-card floating-card-1">
+          <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg></span> Offline Ready
+        </div>
+        <div class="floating-card floating-card-2">
+          <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M15 2v2M15 20v2M2 15h2M2 9h2M20 15h2M20 9h2M9 2v2M9 20v2"/></svg></span> ML Powered
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-trusted">
+      <div class="container">
+        <p class="text-caption text-center" style="opacity:0.5; margin-bottom: 1.5rem;">BUILT FOR GROWER-TO-FINISHER FARMS</p>
+        <div class="trusted-logos">
+          <div class="trusted-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.125em"><line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg> Task-Driven Workflow</div>
+          <div class="trusted-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.125em"><rect width="8" height="4" x="8" y="2" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4M12 16h4M8 11h.01M8 16h.01"/></svg> Gompertz Model</div>
+          <div class="trusted-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.125em"><path d="M9 3h6M10 3v7.4a2 2 0 0 1-.5 1.3L4 19a2 2 0 0 0 1.5 3h13a2 2 0 0 0 1.5-3l-5.5-7.3A2 2 0 0 1 14 10.4V3"/></svg> Explainable Analytics</div>
+          <div class="trusted-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.125em"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg> Offline-First</div>
+          <div class="trusted-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.125em"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Farmer-Friendly</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FEATURES OVERVIEW ========== -->
+  <section class="section" id="features">
+    <div class="container">
+      <div class="section-header">
+        <span class="text-overline">Core Capabilities</span>
+        <h2 class="text-h2">Everything You Need to Run a Batch Well</h2>
+        <p class="text-body-lg">A practical, task-driven system that blends growth modeling, efficiency metrics, and offline-ready data entry.</p>
+      </div>
+
+      <div class="features-grid">
+        <!-- Feature 1 -->
+        <div class="feature-card animate-on-scroll stagger-1">
+          <div class="feature-icon-wrap" style="background: linear-gradient(135deg, rgba(34,197,94,0.1), rgba(34,197,94,0.05));">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--primary-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="m9 16 2 2 4-4"/></svg>
+          </div>
+          <h3 class="text-h3">Task-Driven Daily Work</h3>
+          <p class="text-body">Automatically generated daily, stage, and milestone tasks so farmers follow best-practice routines without guesswork.</p>
+          <div class="feature-tags">
+            <span class="badge">Daily Tasks</span>
+            <span class="badge">Milestones</span>
+            <span class="badge">Stage Shifts</span>
+          </div>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="feature-card animate-on-scroll stagger-2">
+          <div class="feature-icon-wrap" style="background: linear-gradient(135deg, rgba(59,130,246,0.1), rgba(59,130,246,0.05));">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--info)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="7.5 4.21 12 6.81 16.5 4.21"/><polyline points="7.5 19.79 7.5 14.6 3 12"/><polyline points="21 12 16.5 14.6 16.5 19.79"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+          </div>
+          <h3 class="text-h3">Gompertz Growth Projection</h3>
+          <p class="text-body">Explainable growth curves forecast expected weight and reveal early deviations from healthy growth.</p>
+          <div class="feature-tags">
+            <span class="badge" style="background: rgba(59,130,246,0.08); color: var(--info); border-color: rgba(59,130,246,0.2);">Growth Curve</span>
+            <span class="badge" style="background: rgba(59,130,246,0.08); color: var(--info); border-color: rgba(59,130,246,0.2);">Deviation Alerts</span>
+          </div>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="feature-card animate-on-scroll stagger-3">
+          <div class="feature-icon-wrap" style="background: linear-gradient(135deg, rgba(249,115,22,0.1), rgba(249,115,22,0.05));">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+          </div>
+          <h3 class="text-h3">Offline-First Data Capture</h3>
+          <p class="text-body">Log feed, weight, and mortality even without signal. Data saves locally and syncs when you are back online.</p>
+          <div class="feature-tags">
+            <span class="badge badge-accent">Service Workers</span>
+            <span class="badge badge-accent">IndexedDB</span>
+          </div>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="feature-card animate-on-scroll stagger-4">
+          <div class="feature-icon-wrap" style="background: linear-gradient(135deg, rgba(168,85,247,0.1), rgba(168,85,247,0.05));">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+          </div>
+          <h3 class="text-h3">Rule-Based Alerts</h3>
+          <p class="text-body">Get early warnings on mortality, uniformity, task completion, and growth deviations with clear next steps.</p>
+          <div class="feature-tags">
+            <span class="badge" style="background: rgba(168,85,247,0.08); color: #a855f7; border-color: rgba(168,85,247,0.2);">Mortality</span>
+            <span class="badge" style="background: rgba(168,85,247,0.08); color: #a855f7; border-color: rgba(168,85,247,0.2);">Uniformity</span>
+          </div>
+        </div>
+
+        <!-- Feature 5 -->
+        <div class="feature-card animate-on-scroll stagger-5">
+          <div class="feature-icon-wrap" style="background: linear-gradient(135deg, rgba(236,72,153,0.1), rgba(236,72,153,0.05));">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ec4899" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <h3 class="text-h3">Market Readiness</h3>
+          <p class="text-body">Estimate selling weight and market date based on projected growth and your target weight.</p>
+          <div class="feature-tags">
+            <span class="badge" style="background: rgba(236,72,153,0.08); color: #ec4899; border-color: rgba(236,72,153,0.2);">Target Weight</span>
+            <span class="badge" style="background: rgba(236,72,153,0.08); color: #ec4899; border-color: rgba(236,72,153,0.2);">Market Date</span>
+          </div>
+        </div>
+
+        <!-- Feature 6 -->
+        <div class="feature-card animate-on-scroll stagger-6">
+          <div class="feature-icon-wrap" style="background: linear-gradient(135deg, rgba(20,184,166,0.1), rgba(20,184,166,0.05));">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#14b8a6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+          </div>
+          <h3 class="text-h3">Efficiency Metrics</h3>
+          <p class="text-body">Track ADG, FCR, ADFI, and EFI from simple daily logs to see real performance and feed efficiency.</p>
+          <div class="feature-tags">
+            <span class="badge" style="background: rgba(20,184,166,0.08); color: #14b8a6; border-color: rgba(20,184,166,0.2);">ADG</span>
+            <span class="badge" style="background: rgba(20,184,166,0.08); color: #14b8a6; border-color: rgba(20,184,166,0.2);">FCR</span>
+            <span class="badge" style="background: rgba(20,184,166,0.08); color: #14b8a6; border-color: rgba(20,184,166,0.2);">ADFI/EFI</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== HOW IT WORKS ========== -->
+  <section class="section section-dark" id="how-it-works">
+    <div class="container">
+      <div class="section-header">
+        <span class="text-overline" style="color: var(--primary-400);">How It Works</span>
+        <h2 class="text-h2" style="color: white;">From Setup to Selling in 5 Clear Steps</h2>
+        <p class="text-body-lg" style="color: rgba(255,255,255,0.5);">A simple workflow that guides daily work and delivers growth insights.</p>
+      </div>
+
+      <div class="steps-timeline">
+        <div class="step-item animate-on-scroll stagger-1">
+          <div class="step-number">01</div>
+          <div class="step-content">
+            <h3 class="text-h3" style="color: white;">Create a Batch</h3>
+            <p style="color: rgba(255,255,255,0.55);">Enter pig count, starting weight, feed type, and target weight. IntelliSwine prepares the growth model and task plan.</p>
+            <div class="step-tags">
+              <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-0.125em"><ellipse cx="12" cy="13" rx="9" ry="8"/><circle cx="9" cy="11" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="11" r="1" fill="currentColor" stroke="none"/><ellipse cx="12" cy="15.5" rx="3" ry="2"/></svg> Pig Count</span>
+              <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.125em"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg> Start Weight</span>
+              <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.125em"><path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8Z"/><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2Z"/></svg> Feed Type</span>
+              <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.125em"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg> Target Weight</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="step-item animate-on-scroll stagger-2">
+          <div class="step-number">02</div>
+          <div class="step-content">
+            <h3 class="text-h3" style="color: white;">Daily Tasks Appear</h3>
+            <p style="color: rgba(255,255,255,0.55);">Rule-based tasks arrive on schedule: feeding, cleaning, water checks, vaccinations, and milestone weigh-ins.</p>
+            <div class="step-tags">
+              <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.125em"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg> Feeding</span>
+              <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.125em"><path d="m13 11 9-9"/><path d="m9.06 11.9 8.07-8.06a2.85 2.85 0 1 1 4.03 4.03l-8.06 8.08"/><path d="M7.07 14.94c-1.66 0-3 1.35-3 3.02 0 1.33-2.5 1.52-2 2.02 1.08 1.1 2.49 2.02 4 2.02 2.2 0 4-1.8 4-4.04a3.01 3.01 0 0 0-3-3.02Z"/></svg> Cleaning</span>
+              <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.125em"><path d="m18 2 4 4"/><path d="m17 7 3-3"/><path d="M19 9 8.7 19.3c-1 1-2.5 1-3.4 0l-.6-.6c-1-1-1-2.5 0-3.4L15 5"/><path d="m9 11 4 4"/><path d="m5 19-3 3"/><path d="m14 4 6 6"/></svg> Vaccination</span>
+              <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.125em"><rect width="8" height="4" x="8" y="2" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg> Weight Recording</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="step-item animate-on-scroll stagger-3">
+          <div class="step-number">03</div>
+          <div class="step-content">
+            <h3 class="text-h3" style="color: white;">Log Feed, Weight, Mortality</h3>
+            <p style="color: rgba(255,255,255,0.55);">Enter simple daily inputs. Data saves offline and syncs when you are back online.</p>
+            <div class="step-tags">
+              <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.125em"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg> Task Completion</span>
+              <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.125em"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3Z"/><circle cx="12" cy="13" r="3"/></svg> Camera Evidence</span>
+              <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.125em"><path d="M2 20h.01"/><path d="M7 20v-4"/><path d="M12 20v-8"/><path d="M17 20V8"/></svg> Auto Sync</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="step-item animate-on-scroll stagger-4">
+          <div class="step-number">04</div>
+          <div class="step-content">
+            <h3 class="text-h3" style="color: white;">Analytics + Alerts</h3>
+            <p style="color: rgba(255,255,255,0.55);">Gompertz projection plus ADG/FCR/ADFI/EFI show performance, while alerts flag early issues.</p>
+            <div class="step-tags">
+              <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.125em"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg> Growth Prediction</span>
+              <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.125em"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg> Anomaly Alerts</span>
+              <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.125em"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg> Feed Optimization</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="step-item animate-on-scroll stagger-5">
+          <div class="step-number">05</div>
+          <div class="step-content">
+            <h3 class="text-h3" style="color: white;">Market Readiness</h3>
+            <p style="color: rgba(255,255,255,0.55);">See expected selling weight and the estimated market date based on your target weight.</p>
+            <div class="step-tags">
+              <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.125em"><circle cx="8" cy="8" r="6"/><path d="M18.09 10.37A6 6 0 1 1 10.34 18"/><path d="M7 6h1v4"/><path d="m16.71 13.88.7.71-2.82 2.82"/></svg> Max Profit Timing</span>
+              <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.125em"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg> Market Trends</span>
+              <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.125em"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg> Optimal Window</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== COMPARISON TABLE ========== -->
+  <section class="section" id="comparison">
+    <div class="container">
+      <div class="section-header">
+        <span class="text-overline">Why IntelliSwine</span>
+        <h2 class="text-h2">Built for Real Farm Conditions</h2>
+        <p class="text-body-lg">Compare IntelliSwine to manual records and expensive, online-only systems.</p>
+      </div>
+
+      <div class="comparison-table-wrap animate-on-scroll">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Solution</th>
+              <th>Digital Records</th>
+              <th>ML Prediction</th>
+              <th>Automated Tasks</th>
+              <th>Offline Support</th>
+              <th>Image Logging</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Manual Records (Paper/Sheets)</strong></td>
+              <td><span class="check-no">✗</span></td>
+              <td><span class="check-no">✗</span></td>
+              <td><span class="check-no">✗</span></td>
+              <td><span class="check-no">✗</span></td>
+              <td><span class="check-no">✗</span></td>
+            </tr>
+            <tr>
+              <td><strong>Commercial SaaS</strong></td>
+              <td><span class="check-yes">✓</span></td>
+              <td><span class="check-no">✗</span></td>
+              <td><span class="check-no">✗</span></td>
+              <td><span class="check-no">✗</span></td>
+              <td><span class="check-no">✗</span></td>
+            </tr>
+            <tr>
+              <td><strong>IoT/Sensor Systems</strong></td>
+              <td><span class="check-yes">✓</span></td>
+              <td><span class="check-yes">✓</span></td>
+              <td><span class="check-no">✗</span></td>
+              <td><span class="check-no">✗</span></td>
+              <td><span class="check-no">✗</span></td>
+            </tr>
+            <tr>
+              <td><strong>Basic PWA Tools</strong></td>
+              <td><span class="check-yes">✓</span></td>
+              <td><span class="check-no">✗</span></td>
+              <td><span class="check-no">✗</span></td>
+              <td><span class="check-yes">✓</span></td>
+              <td><span class="check-no">✗</span></td>
+            </tr>
+            <tr class="highlight-row">
+              <td><strong>IntelliSwine <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.125em"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3L12 3Z"/><path d="M5 3v4M19 17v4M3 5h4M17 19h4"/></svg></strong></td>
+              <td><span class="check-yes">✓</span></td>
+              <td><span class="check-yes">✓</span></td>
+              <td><span class="check-yes">✓</span></td>
+              <td><span class="check-yes">✓</span></td>
+              <td><span class="check-yes">✓</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TECH STACK ========== -->
+  <section class="section section-subtle" id="tech-stack">
+    <div class="container">
+      <div class="section-header">
+        <span class="text-overline">Technology</span>
+        <h2 class="text-h2">Built for Reliability and Clarity</h2>
+        <p class="text-body-lg">Simple tools, explainable modeling, and offline-ready data capture.</p>
+      </div>
+
+      <div class="tech-grid">
+        <div class="tech-card animate-on-scroll stagger-1">
+          <div class="tech-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"/><path d="M20.2 20.2c2-2 0-7.4-4.5-11.9C11.2 3.8 5.9 1.8 3.8 3.8c-2 2 0 7.4 4.5 11.9 4.5 4.5 9.9 6.5 11.9 4.5Z"/><path d="M15.7 15.7c4.5-4.5 6.5-9.9 4.5-11.9-2-2-7.4 0-11.9 4.5-4.5 4.5-6.5 9.9-4.5 11.9 2 2 7.4 0 11.9-4.5Z"/></svg></div>
+          <h4>PWA Frontend</h4>
+          <p>Offline-first, installable, responsive web app for daily farm logs</p>
+        </div>
+        <div class="tech-card animate-on-scroll stagger-2">
+          <div class="tech-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" x2="6" y1="2" y2="4"/><line x1="10" x2="10" y1="2" y2="4"/><line x1="14" x2="14" y1="2" y2="4"/></svg></div>
+          <h4>Java + Spring Boot</h4>
+          <p>Task generation, analytics, alerts, and secure APIs</p>
+        </div>
+        <div class="tech-card animate-on-scroll stagger-3">
+          <div class="tech-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+          <h4>Growth Modeling</h4>
+          <p>Gompertz-based projection and explainable analytics</p>
+        </div>
+        <div class="tech-card animate-on-scroll stagger-4">
+          <div class="tech-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></svg></div>
+          <h4>PostgreSQL</h4>
+          <p>Structured records for farms, batches, and performance metrics</p>
+        </div>
+        <div class="tech-card animate-on-scroll stagger-5">
+          <div class="tech-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" x2="2" y1="12" y2="12"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/><line x1="6" x2="6.01" y1="16" y2="16"/><line x1="10" x2="10.01" y1="16" y2="16"/></svg></div>
+          <h4>IndexedDB</h4>
+          <p>Local storage for offline logs and fast sync</p>
+        </div>
+        <div class="tech-card animate-on-scroll stagger-6">
+          <div class="tech-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3Z"/><circle cx="12" cy="13" r="3"/></svg></div>
+          <h4>MediaDevices API</h4>
+          <p>Optional photo proof of task completion (Phase 2)</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TESTIMONIALS ========== -->
+  <section class="section" id="testimonials">
+    <div class="container">
+      <div class="section-header">
+        <span class="text-overline">Testimonials</span>
+        <h2 class="text-h2">Built With Farmers in Mind</h2>
+        <p class="text-body-lg">Practical feedback from real farm routines.</p>
+      </div>
+
+      <div class="testimonials-grid">
+        <div class="testimonial-card animate-on-scroll stagger-1">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"The daily task list keeps my team on track. I know what to do each day without checking notebooks."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">JR</div>
+            <div>
+              <strong>Juan Reyes</strong>
+              <span>Swine Farmer, Bulacan</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card animate-on-scroll stagger-2">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"Offline logging means I never lose data in areas with weak signal. It syncs once I am back online."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">MS</div>
+            <div>
+              <strong>Maria Santos</strong>
+              <span>Livestock Manager, Pangasinan</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card animate-on-scroll stagger-3">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"The growth projection helps me plan feed and estimate when pigs will be market-ready."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">RC</div>
+            <div>
+              <strong>Roberto Cruz</strong>
+              <span>Farm Owner, Tarlac</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA ========== -->
+  <section class="section cta-section">
+    <div class="container">
+      <div class="cta-card animate-on-scroll">
+        <div class="cta-bg-orbs">
+          <div class="cta-orb cta-orb-1"></div>
+          <div class="cta-orb cta-orb-2"></div>
+        </div>
+        <div class="cta-content">
+          <span class="badge badge-dark badge-dot" style="margin-bottom: 1rem;">Start Today</span>
+          <h2 class="text-h1" style="color: white; margin-bottom: 1rem;">Run Every Batch With Confidence</h2>
+          <p class="text-body-lg" style="color: rgba(255,255,255,0.6); max-width: 560px; margin: 0 auto 2rem;">
+            Start your free trial and get daily tasks, growth projections, and efficiency metrics in one place.
+          </p>
+          <div class="cta-buttons">
+            <a href="register.html" class="btn btn-primary btn-lg" style="background: white; color: var(--primary-700); box-shadow: var(--shadow-xl);">
+              Start Free Trial
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+            <a href="pricing.html" class="btn btn-secondary btn-lg" style="border-color: rgba(255,255,255,0.2); color: white; background: rgba(255,255,255,0.08);">
+              View Pricing
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo">
+            <div class="logo-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="13" rx="9" ry="8"/><circle cx="9" cy="11" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="11" r="1" fill="currentColor" stroke="none"/><ellipse cx="12" cy="15.5" rx="3" ry="2"/><circle cx="10.5" cy="15.5" r="0.7" fill="currentColor" stroke="none"/><circle cx="13.5" cy="15.5" r="0.7" fill="currentColor" stroke="none"/><path d="M4 8c-1-3 1-5 3-4"/><path d="M20 8c1-3-1-5-3-4"/></svg></div>
+            IntelliSwine
+          </a>
+          <p>Task-driven swine production management with growth projection, efficiency metrics, and offline-first data capture.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Product</h4>
+          <a href="features.html">Features</a>
+          <a href="pricing.html">Pricing</a>
+          <a href="#how-it-works">How It Works</a>
+          <a href="#">Documentation</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="#">About Us</a>
+          <a href="#">Blog</a>
+          <a href="#">Careers</a>
+          <a href="#">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Cookie Policy</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 IntelliSwine. All rights reserved.</span>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="#" aria-label="Twitter"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M4 3h4l5 7 5-7h4L15 12l8 9h-4l-5.5-7L8 21H4l8-9.5z"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg></a>
+          <a href="#" aria-label="GitHub"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/utils/messages.js"></script>
+  <script src="js/auth/auth-storage.js"></script>
+  <script src="js/auth/auth-router.js"></script>
+  <script src="js/utils/api.js"></script>
+  <script src="js/utils/ui.js"></script>
+  <script src="js/utils/toast.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/landing.js"></script>
+  <script>
+    // Show toast notification if user is authenticated
+    document.addEventListener('DOMContentLoaded', () => {
+      if (AppAuthRouter.isAuthenticated()) {
+        AppToast.info('Welcome back! You can continue from where you left off.', {
+          actionText: 'Go to Dashboard',
+          onAction: () => {
+            window.location.href = 'farmer/pages/dashboard.html';
+          },
+          duration: 5000
+        });
+        
+        // Update nav buttons for authenticated users
+        const navActions = document.getElementById('navActions');
+        if (navActions) {
+          navActions.innerHTML = `
+            <a href="farmer/pages/dashboard.html" class="btn btn-primary">Dashboard</a>
+          `;
+        }
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard - IntelliSwine</title>
+  <meta name="description" content="IntelliSwine dashboard with task overview, growth projection, efficiency metrics, and offline-ready logging." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../../css/styles.css" />
+  <link rel="stylesheet" href="../../css/dashboard.css" />
+  <link rel="stylesheet" href="../../css/components/card.css" />
+  <link rel="stylesheet" href="../../css/components/forms.css" />
+  <link rel="stylesheet" href="../../css/components/toast.css" />
+  <link rel="stylesheet" href="../../css/components/batch-modal.css" />
+</head>
+<body class="dashboard-page">
+  <!-- Navbar component container -->
+  <div id="navbar-container"></div>
+
+  <div class="dashboard-layout">
+    <!-- Sidebar component container -->
+    <div id="sidebar-container"></div>
+
+    <main class="dashboard-main">
+      <section class="dashboard-hero">
+        <div class="dashboard-header">
+          <div>
+            <span class="text-overline">Welcome back</span>
+            <h2>
+              <span id="dashboardUserName"></span>
+              <span id="dashboardHeroSuffix">here is your batch overview</span>
+            </h2>
+            <p class="card-subtitle">Batch Alpha • Day 38</p>
+            <p class="card-subtitle">Growing stage is on track. Review performance and tackle today’s priorities.</p>
+            <div class="hero-meta">
+              <span class="status-pill status-info">Growing Stage</span>
+              <span class="status-pill status-good">Health Risk: Low</span>
+              <span class="status-pill">Last update: 2h ago</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="overview-top">
+        <div class="dashboard-card performance-card">
+          <div class="dashboard-card-header">
+            <div>
+              <h4>Performance Snapshot</h4>
+              <p class="card-subtitle">Growth, efficiency, and projection status at a glance.</p>
+            </div>
+            <a href="analytics.html" class="btn btn-sm btn-ghost">View Analytics</a>
+          </div>
+          <div class="kpi-summary">
+            <div class="kpi-item">
+              <span class="kpi-label">ADFI</span>
+              <span class="kpi-value">2.9 kg</span>
+            </div>
+            <div class="kpi-divider"></div>
+            <div class="kpi-item">
+              <span class="kpi-label">ADG</span>
+              <span class="kpi-value">0.72 kg</span>
+            </div>
+            <div class="kpi-divider"></div>
+            <div class="kpi-item">
+              <span class="kpi-label">FCR</span>
+              <span class="kpi-value">2.65</span>
+            </div>
+            <div class="kpi-divider"></div>
+            <div class="kpi-item">
+              <span class="kpi-label">EFI</span>
+              <span class="kpi-value">0.86</span>
+            </div>
+          </div>
+          <div class="projection-summary">
+            <div>
+              <p class="projection-title">Gompertz Projection</p>
+              <p class="projection-sub">Projected market date: <strong>Day 70</strong> • Target 105 kg</p>
+            </div>
+            <div class="projection-metrics">
+              <div class="projection-row">
+                <span class="projection-label">Projected Weight</span>
+                <span class="projection-value">87.3 kg</span>
+              </div>
+              <div class="projection-row">
+                <span class="projection-label">Variance to Model</span>
+                <span class="projection-value positive">+2.4%</span>
+              </div>
+              <div class="projection-bar">
+                <div class="progress-bar">
+                  <div class="progress-bar-fill green" style="width: 58%;"></div>
+                </div>
+                <span class="text-sm text-muted">58% of projected growth achieved</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dashboard-card monitoring-card">
+          <div class="dashboard-card-header">
+            <h4>Monitoring Focus</h4>
+            <a href="alerts.html" class="btn btn-sm btn-ghost">View all</a>
+          </div>
+          <div class="monitoring-list">
+            <div class="monitoring-row">
+              <div>
+                <div class="monitoring-label">Mortality</div>
+                <div class="monitoring-value">0.6% (Goal ≤ 1%)</div>
+              </div>
+              <span class="status-pill status-good">On track</span>
+            </div>
+            <div class="monitoring-row">
+              <div>
+                <div class="monitoring-label">Spacing</div>
+                <div class="monitoring-value">0.82 m² / head (Target 0.8)</div>
+              </div>
+              <span class="status-pill status-good">Optimal</span>
+            </div>
+            <div class="monitoring-row">
+              <div>
+                <div class="monitoring-label">Uniformity</div>
+                <div class="monitoring-value">86% within target band</div>
+              </div>
+              <span class="status-pill status-info">Stable</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="progress-card">
+        <div class="progress-header">
+          <div class="progress-title">
+            <h3>Production Stage Progress</h3>
+            <p>Track your current phase and next critical milestone.</p>
+          </div>
+          <span class="status-pill status-info">Growing Stage</span>
+        </div>
+        <div class="progress-focus">
+          <i class="fas fa-bullseye"></i>
+          Current focus: maintain feed efficiency and weekly weigh-ins
+        </div>
+        <div class="stage-progress">
+          <div class="stage-bar completed">Receiving</div>
+          <div class="stage-bar current active">Growing</div>
+          <div class="stage-bar upcoming">Finishing</div>
+          <div class="stage-bar upcoming">Market Ready</div>
+        </div>
+        <div class="stage-footer">
+          <div>
+            <span class="text-sm text-muted">Overall progress</span>
+            <div class="progress-bar mt-1" style="width: 280px;">
+              <div class="progress-bar-fill green" style="width: 55%;"></div>
+            </div>
+          </div>
+          <span class="text-sm font-semibold">55% complete • Day 38 of 70</span>
+        </div>
+        <div class="sub-stage-indicator">
+          <div class="sub-stage-track">
+            <div class="sub-stage-label">
+              <span class="label-text">Sub-stage</span>
+              <span class="phase-info">Grower 2</span>
+            </div>
+            <div class="sub-stage-dots">
+              <span class="sub-dot active"></span>
+              <span class="sub-dot current"></span>
+              <span class="sub-dot"></span>
+              <span class="sub-dot"></span>
+            </div>
+            <div class="stage-focus">Next check: Day 42 vaccine</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="overview-grid">
+        <div class="dashboard-card">
+          <div class="dashboard-card-header">
+            <div>
+              <h4>Daily Tasks</h4>
+              <p class="card-subtitle">3 pending • 12 completed</p>
+            </div>
+            <a href="tasks.html" class="btn btn-sm btn-ghost">View all</a>
+          </div>
+          <div class="notification-item">
+            <div class="notification-dot amber"></div>
+            <div>
+              <div class="notification-text"><strong>High:</strong> Weekly weigh-in due today.</div>
+              <div class="notification-time">Pen 2 sample</div>
+            </div>
+          </div>
+          <div class="notification-item">
+            <div class="notification-dot green"></div>
+            <div>
+              <div class="notification-text"><strong>Feeding:</strong> Evening feed scheduled at 18:00.</div>
+              <div class="notification-time">Monitor leftovers</div>
+            </div>
+          </div>
+          <div class="notification-item">
+            <div class="notification-dot blue"></div>
+            <div>
+              <div class="notification-text"><strong>Completed:</strong> Morning feed logged.</div>
+              <div class="notification-time">2.2 kg per head</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dashboard-card">
+          <div class="dashboard-card-header">
+            <h4>Alerts Overview</h4>
+            <a href="alerts.html" class="btn btn-sm btn-ghost">Review</a>
+          </div>
+          <div class="notification-item">
+            <div class="notification-dot red"></div>
+            <div>
+              <div class="notification-text"><strong>Critical:</strong> Growth below expected by 8% in pen 2.</div>
+              <div class="notification-time">2 hours ago</div>
+            </div>
+          </div>
+          <div class="notification-item">
+            <div class="notification-dot amber"></div>
+            <div>
+              <div class="notification-text"><strong>Reminder:</strong> Vaccine schedule due on day 42.</div>
+              <div class="notification-time">Today</div>
+            </div>
+          </div>
+          <div class="notification-item">
+            <div class="notification-dot blue"></div>
+            <div>
+              <div class="notification-text"><strong>Insight:</strong> Feed intake improved by 3% after last adjustment.</div>
+              <div class="notification-time">Yesterday</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Farm Setup Required Modal -->
+  <div id="farmSetupModal" class="batch-modal farm-setup-modal" aria-hidden="true">
+    <div class="batch-modal-overlay"></div>
+    <div class="batch-modal-content">
+      <div class="batch-modal-header">
+        <h3>Farm Setup Required</h3>
+        <button class="batch-modal-close" id="closeFarmSetupModalBtn" aria-label="Close">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="batch-modal-body">
+        <div class="farm-setup-message">
+          <div class="farm-setup-icon">
+            <i class="fas fa-tractor"></i>
+          </div>
+          <div>
+            <p class="farm-setup-title">You need to set up your farm before starting a production cycle.</p>
+            <p class="farm-setup-subtitle">Complete the Farm Management module to unlock batch creation.</p>
+          </div>
+        </div>
+      </div>
+      <div class="batch-modal-footer">
+        <button class="btn btn-secondary" id="dismissFarmSetupBtn" type="button">Not now</button>
+        <a class="btn btn-primary" id="goToFarmSetupBtn" href="farm-management.html">Set Up Farm</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Start Batch Modal -->
+  <div id="startBatchModal" class="batch-modal">
+    <div class="batch-modal-overlay"></div>
+    <div class="batch-modal-content">
+      <div class="batch-modal-header">
+        <h3>Start New Batch</h3>
+        <button class="batch-modal-close" id="closeBatchModalBtn">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      
+      <form id="startBatchForm" class="batch-form">
+        <div class="modal-fields">
+          <div class="form-section">
+          <h4>Batch Information</h4>
+          
+          <div class="form-group">
+            <label class="form-label" for="farmSelect">Select Farm</label>
+            <select class="form-input" id="farmSelect" required>
+              <option value="">-- Choose a farm --</option>
+              <option value="farm1">Main Farm - North Facility</option>
+              <option value="farm2">Secondary Farm - South Facility</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label" for="batchName">Batch Name</label>
+            <input class="form-input" id="batchName" type="text" placeholder="e.g., North Batch Q1 2025" required />
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label" for="pigCount">Number of Pigs</label>
+            <input class="form-input" id="pigCount" type="number" placeholder="1000" required />
+          </div>
+        </div>
+
+          <div class="form-section">
+          <h4>Initial Parameters</h4>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="arrivalDate">Arrival Date</label>
+              <input class="form-input" id="arrivalDate" type="date" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="initialWeight">Initial Avg Weight (kg)</label>
+              <input class="form-input" id="initialWeight" type="number" step="0.1" placeholder="15.2" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="targetWeight">Target Market Weight (kg)</label>
+              <input class="form-input" id="targetWeight" type="number" step="0.1" placeholder="110" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="targetDays">Expected Days to Market</label>
+              <input class="form-input" id="targetDays" type="number" placeholder="70" required />
+            </div>
+          </div>
+        </div>
+
+          <div class="form-section">
+          <h4>Pig Genetics & Health</h4>
+          
+          <div class="form-group">
+            <label class="form-label" for="breed">Breed/Genetics</label>
+            <select class="form-input" id="breed" required>
+              <option value="">-- Select breed --</option>
+              <option value="landrace">Landrace</option>
+              <option value="yorkshire">Yorkshire</option>
+              <option value="duroc">Duroc</option>
+              <option value="hampshire">Hampshire</option>
+              <option value="cross">Cross Breed</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="source">Source</label>
+              <select class="form-input" id="source" required>
+                <option value="">-- Select source --</option>
+                <option value="breeder">Certified Breeder</option>
+                <option value="auction">Auction Market</option>
+                <option value="private">Private Seller</option>
+                <option value="own">Own Breeding Program</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="vaccination">Initial Vaccinations</label>
+              <select class="form-input" id="vaccination" required>
+                <option value="">-- Select vaccination status --</option>
+                <option value="full">Fully Vaccinated</option>
+                <option value="partial">Partially Vaccinated</option>
+                <option value="none">Not Vaccinated</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+          <div class="form-section">
+          <h4>Feeding Plan</h4>
+          
+          <div class="form-group">
+            <label class="form-label" for="feedType">Feed Type</label>
+            <select class="form-input" id="feedType" required>
+              <option value="">-- Select feed type --</option>
+              <option value="standard">Standard Mix</option>
+              <option value="premium">Premium Mix</option>
+              <option value="organic">Organic</option>
+              <option value="medicated">Medicated</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="feedSupplier">Feed Supplier</label>
+              <input class="form-input" id="feedSupplier" type="text" placeholder="Enter supplier name" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="feedStartWeight">Feed Change at Weight (kg)</label>
+              <input class="form-input" id="feedStartWeight" type="number" step="0.1" placeholder="30" />
+            </div>
+          </div>
+        </div>
+
+        </div>
+        <div class="form-actions">
+          <button type="button" class="btn btn-secondary" id="cancelBatchBtn">Cancel</button>
+          <button type="submit" class="btn btn-primary">
+            <i class="fas fa-play"></i>
+            Start Batch
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Utilities and Components -->
+  <script src="../../js/utils/messages.js"></script>
+  <script src="../../js/utils/dom.js"></script>
+  <script src="../../js/utils/validators.js"></script>
+  <script src="../../js/auth/auth-storage.js"></script>
+  <script src="../../js/auth/auth-router.js"></script>
+  <script src="../../js/utils/api.js"></script>
+  <script src="../../js/utils/ui.js"></script>
+  <script src="../../js/main.js"></script>
+  <script src="../../js/farmer/dashboard.js"></script>
+
+  <!-- Component System -->
+  <script src="../../js/farmer/component-loader.js"></script>
+  <script src="../../js/components/form-handler.js"></script>
+  <script src="../../js/components/navbar.js"></script>
+  <script src="../../js/components/sidebar.js"></script>
+  <script src="../../js/components/card.js"></script>
+  <script src="../../js/components/batch-modal.js"></script>
+
+  <!-- Page Initialization -->
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      // Require authentication
+      AppAuthRouter.requireAuth();
+      
+      // Load components
+      await window.AppComponentLoader.injectComponent('#navbar-container', '../../farmer/components/navbar.html');
+      await window.AppComponentLoader.injectComponent('#sidebar-container', '../../farmer/components/sidebar.html');
+      
+      // Initialize components
+      if (window.AppNavbar) window.AppNavbar.init();
+      if (window.AppSidebar) window.AppSidebar.init();
+      if (window.AppCard) window.AppCard.init();
+      if (window.AppBatchModal) window.AppBatchModal.init();
+    });
+  </script>
+</body>
+</html>

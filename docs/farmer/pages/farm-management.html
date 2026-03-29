@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Farm Management - IntelliSwine</title>
+  <meta name="description" content="Farm setup and management for IntelliSwine." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../../css/styles.css" />
+  <link rel="stylesheet" href="../../css/dashboard.css" />
+  <link rel="stylesheet" href="../../css/components/card.css" />
+  <link rel="stylesheet" href="../../css/components/forms.css" />
+  <link rel="stylesheet" href="../../css/components/toast.css" />
+  <link rel="stylesheet" href="../../css/components/batch-modal.css" />
+</head>
+<body class="dashboard-page">
+  <!-- Navbar component container -->
+  <div id="navbar-container"></div>
+
+  <div class="dashboard-layout">
+    <!-- Sidebar component container -->
+    <div id="sidebar-container"></div>
+
+    <main class="dashboard-main">
+      <div class="dashboard-header">
+        <div>
+          <h2>Farm Setup</h2>
+          <p>Save the essentials once to unlock production cycles and daily task workflows.</p>
+        </div>
+      </div>
+
+      <div class="dashboard-card farm-setup-card">
+        <div class="dashboard-card-header">
+          <div>
+            <h4>Farm setup essentials</h4>
+            <p class="card-subtitle">Focus on the details that drive batch planning and performance tracking.</p>
+          </div>
+          <span class="section-badge">Required</span>
+        </div>
+        <div class="dashboard-card-body">
+          <div class="farm-setup-layout">
+            <div>
+              <form id="farmSetupForm" class="farm-setup-form">
+                <div class="form-section">
+                  <h4>Farm profile</h4>
+                  <p class="form-section-hint">Keep this to the essentials. You can update details anytime.</p>
+
+                  <div class="input-grid">
+                    <div class="form-group form-span-2">
+                      <label class="form-label required" for="farmName">Farm name</label>
+                      <input class="form-input" id="farmName" name="farmName" type="text" placeholder="San Isidro Grower Farm" required />
+                      <p class="field-hint">Use the name your team recognizes on daily logs.</p>
+                    </div>
+
+                    <div class="form-group form-span-2">
+                      <label class="form-label required" for="farmLocation">Location</label>
+                      <input class="form-input" id="farmLocation" name="farmLocation" type="text" placeholder="Pangasinan, Philippines" required />
+                      <p class="field-hint">City or municipality is enough for reporting.</p>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="form-label required" for="barnCapacity">Total barn capacity (heads)</label>
+                      <input class="form-input" id="barnCapacity" name="barnCapacity" type="number" min="1" placeholder="1000" required />
+                      <p class="field-hint">Used for stocking alerts and spacing checks.</p>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="form-label required" for="barnCount">Number of barns</label>
+                      <input class="form-input" id="barnCount" name="barnCount" type="number" min="1" placeholder="4" required />
+                      <p class="field-hint">Helps split tasks across barns.</p>
+                    </div>
+
+                    <div class="form-group form-span-2">
+                      <label class="form-label required" for="waterSource">Primary water source</label>
+                      <select class="form-input" id="waterSource" name="waterSource" required>
+                        <option value="">Select water source</option>
+                        <option value="deep-well">Deep well</option>
+                        <option value="municipal">Municipal supply</option>
+                        <option value="spring">Spring water</option>
+                      </select>
+                      <p class="field-hint">Used for health risk reminders and maintenance tasks.</p>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            <aside class="farm-setup-aside">
+              <div class="farm-setup-help">
+                <h4>Why this matters</h4>
+                <p class="text-body">These details power schedules, alerts, and performance reporting.</p>
+                <ul class="setup-help-list">
+                  <li><strong>Capacity checks:</strong> keep batch size within space limits.</li>
+                  <li><strong>Water reminders:</strong> schedule source checks and cleanups.</li>
+                  <li><strong>Performance baseline:</strong> set benchmarks for growth and efficiency.</li>
+                </ul>
+              </div>
+
+              <div class="farm-setup-status">
+                <div class="form-label">Setup status</div>
+                <div class="status-row">
+                  <span class="status-dot" aria-hidden="true"></span>
+                  <p id="farmSetupStatus" class="text-body">Checking setup state...</p>
+                </div>
+                <p id="farmSetupTimestamp" class="text-caption status-meta"></p>
+                <p class="field-hint">Save to unlock batch creation tools.</p>
+              </div>
+            </aside>
+          </div>
+        </div>
+        <div class="dashboard-card-footer">
+          <button class="btn btn-primary" id="saveFarmSetupBtn" type="button">Save farm setup</button>
+          <button class="btn btn-secondary" id="markFarmSetupIncompleteBtn" type="button">Reset form</button>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Farm Setup Complete Modal -->
+  <div id="farmSetupCompleteModal" class="batch-modal farm-setup-modal" aria-hidden="true">
+    <div class="batch-modal-overlay"></div>
+    <div class="batch-modal-content">
+      <div class="batch-modal-header">
+        <h3>Farm Setup Complete</h3>
+        <button class="batch-modal-close" id="closeFarmSetupCompleteBtn" aria-label="Close">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="batch-modal-body">
+        <div class="farm-setup-message">
+          <div class="farm-setup-icon">
+            <i class="fas fa-seedling"></i>
+          </div>
+          <div>
+            <p class="farm-setup-title">Your farm setup is saved.</p>
+            <p class="farm-setup-subtitle">Would you like to start a production cycle now?</p>
+          </div>
+        </div>
+      </div>
+      <div class="batch-modal-footer">
+        <button class="btn btn-secondary" id="dismissFarmSetupCompleteBtn" type="button">Not now</button>
+        <button class="btn btn-primary" id="confirmStartBatchBtn" type="button">
+          <i class="fas fa-play"></i>
+          Start Production Cycle
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Start Batch Modal -->
+  <div id="startBatchModal" class="batch-modal">
+    <div class="batch-modal-overlay"></div>
+    <div class="batch-modal-content">
+      <div class="batch-modal-header">
+        <h3>Start New Batch</h3>
+        <button class="batch-modal-close" id="closeBatchModalBtn">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      
+      <form id="startBatchForm" class="batch-form">
+        <div class="form-section">
+          <h4>Batch Information</h4>
+          
+          <div class="form-group">
+            <label class="form-label" for="farmSelect">Select Farm</label>
+            <select class="form-input" id="farmSelect" required>
+              <option value="">-- Choose a farm --</option>
+              <option value="farm1">Main Farm - North Facility</option>
+              <option value="farm2">Secondary Farm - South Facility</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label" for="batchName">Batch Name</label>
+            <input class="form-input" id="batchName" type="text" placeholder="e.g., North Batch Q1 2025" required />
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label" for="pigCount">Number of Pigs</label>
+            <input class="form-input" id="pigCount" type="number" placeholder="1000" required />
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h4>Initial Parameters</h4>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="arrivalDate">Arrival Date</label>
+              <input class="form-input" id="arrivalDate" type="date" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="initialWeight">Initial Avg Weight (kg)</label>
+              <input class="form-input" id="initialWeight" type="number" step="0.1" placeholder="15.2" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="targetWeight">Target Market Weight (kg)</label>
+              <input class="form-input" id="targetWeight" type="number" step="0.1" placeholder="110" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="targetDays">Expected Days to Market</label>
+              <input class="form-input" id="targetDays" type="number" placeholder="70" required />
+            </div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h4>Pig Genetics & Health</h4>
+          
+          <div class="form-group">
+            <label class="form-label" for="breed">Breed/Genetics</label>
+            <select class="form-input" id="breed" required>
+              <option value="">-- Select breed --</option>
+              <option value="landrace">Landrace</option>
+              <option value="yorkshire">Yorkshire</option>
+              <option value="duroc">Duroc</option>
+              <option value="hampshire">Hampshire</option>
+              <option value="cross">Cross Breed</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="source">Source</label>
+              <select class="form-input" id="source" required>
+                <option value="">-- Select source --</option>
+                <option value="breeder">Certified Breeder</option>
+                <option value="auction">Auction Market</option>
+                <option value="private">Private Seller</option>
+                <option value="own">Own Breeding Program</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="vaccination">Initial Vaccinations</label>
+              <select class="form-input" id="vaccination" required>
+                <option value="">-- Select vaccination status --</option>
+                <option value="full">Fully Vaccinated</option>
+                <option value="partial">Partially Vaccinated</option>
+                <option value="none">Not Vaccinated</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h4>Feeding Plan</h4>
+          
+          <div class="form-group">
+            <label class="form-label" for="feedType">Feed Type</label>
+            <select class="form-input" id="feedType" required>
+              <option value="">-- Select feed type --</option>
+              <option value="standard">Standard Mix</option>
+              <option value="premium">Premium Mix</option>
+              <option value="organic">Organic</option>
+              <option value="medicated">Medicated</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="feedSupplier">Feed Supplier</label>
+              <input class="form-input" id="feedSupplier" type="text" placeholder="Enter supplier name" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="feedStartWeight">Feed Change at Weight (kg)</label>
+              <input class="form-input" id="feedStartWeight" type="number" step="0.1" placeholder="30" />
+            </div>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="btn btn-secondary" id="cancelBatchBtn">Cancel</button>
+          <button type="submit" class="btn btn-primary">
+            <i class="fas fa-play"></i>
+            Start Batch
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Utilities and Components -->
+  <script src="../../js/utils/messages.js"></script>
+  <script src="../../js/utils/dom.js"></script>
+  <script src="../../js/utils/validators.js"></script>
+  <script src="../../js/auth/auth-storage.js"></script>
+  <script src="../../js/auth/auth-router.js"></script>
+  <script src="../../js/utils/api.js"></script>
+  <script src="../../js/utils/ui.js"></script>
+  <script src="../../js/main.js"></script>
+  <script src="../../js/farmer/dashboard.js"></script>
+
+  <!-- Component System -->
+  <script src="../../js/farmer/component-loader.js"></script>
+  <script src="../../js/components/form-handler.js"></script>
+  <script src="../../js/components/navbar.js"></script>
+  <script src="../../js/components/sidebar.js"></script>
+  <script src="../../js/components/card.js"></script>
+  <script src="../../js/components/batch-modal.js"></script>
+
+  <!-- Page Initialization -->
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      // Require authentication
+      AppAuthRouter.requireAuth();
+      
+      // Load components
+      await window.AppComponentLoader.injectComponent('#navbar-container', '../../farmer/components/navbar.html');
+      await window.AppComponentLoader.injectComponent('#sidebar-container', '../../farmer/components/sidebar.html', { farmManagementActive: 'active' });
+      
+      // Initialize components
+      if (window.AppNavbar) window.AppNavbar.init();
+      if (window.AppSidebar) window.AppSidebar.init();
+      if (window.AppCard) window.AppCard.init();
+
+      const statusEl = document.getElementById('farmSetupStatus');
+      const timestampEl = document.getElementById('farmSetupTimestamp');
+      const formEl = document.getElementById('farmSetupForm');
+      const saveBtn = document.getElementById('saveFarmSetupBtn');
+      const resetBtn = document.getElementById('markFarmSetupIncompleteBtn');
+      const setupCompleteModal = document.getElementById('farmSetupCompleteModal');
+      const setupCompleteCloseBtn = document.getElementById('closeFarmSetupCompleteBtn');
+      const setupCompleteDismissBtn = document.getElementById('dismissFarmSetupCompleteBtn');
+      const setupCompleteConfirmBtn = document.getElementById('confirmStartBatchBtn');
+
+      const updateBodyScrollLock = () => {
+        const hasActiveModal = Boolean(document.querySelector('.batch-modal.active'));
+        document.body.classList.toggle('modal-open', hasActiveModal);
+      };
+
+      const setStatus = (isComplete, savedAt = '') => {
+        if (!statusEl) return;
+        statusEl.textContent = isComplete
+          ? 'Farm setup is complete and ready for batch planning.'
+          : 'Farm setup is not complete yet.';
+
+        if (timestampEl) {
+          timestampEl.textContent = savedAt ? `Last saved: ${savedAt}` : '';
+        }
+      };
+
+      const localFlag = window.localStorage.getItem('farmSetupComplete') === 'true';
+      const localData = window.localStorage.getItem('farmSetupData');
+      const savedAt = window.localStorage.getItem('farmSetupSavedAt') || '';
+
+      if (formEl && localData) {
+        try {
+          const parsed = JSON.parse(localData);
+          Object.entries(parsed).forEach(([key, value]) => {
+            const field = formEl.querySelector(`[name="${key}"]`);
+            if (field) field.value = value;
+          });
+        } catch (err) {
+          console.warn('Unable to parse farm setup data', err);
+        }
+      }
+
+      setStatus(localFlag, savedAt);
+
+      const openSetupCompleteModal = () => {
+        if (!setupCompleteModal) return;
+        setupCompleteModal.classList.add('active');
+        setupCompleteModal.setAttribute('aria-hidden', 'false');
+        updateBodyScrollLock();
+      };
+
+      const closeSetupCompleteModal = () => {
+        if (!setupCompleteModal) return;
+        setupCompleteModal.classList.remove('active');
+        setupCompleteModal.setAttribute('aria-hidden', 'true');
+        updateBodyScrollLock();
+      };
+
+      setupCompleteModal?.querySelector('.batch-modal-overlay')?.addEventListener('click', closeSetupCompleteModal);
+      setupCompleteCloseBtn?.addEventListener('click', closeSetupCompleteModal);
+      setupCompleteDismissBtn?.addEventListener('click', closeSetupCompleteModal);
+      setupCompleteConfirmBtn?.addEventListener('click', () => {
+        closeSetupCompleteModal();
+        if (typeof AppBatchModal !== 'undefined' && AppBatchModal.open) {
+          AppBatchModal.open();
+        }
+      });
+
+      saveBtn?.addEventListener('click', () => {
+        if (!formEl) return;
+        if (!formEl.checkValidity()) {
+          formEl.reportValidity();
+          return;
+        }
+
+        const formData = new FormData(formEl);
+        const payload = Object.fromEntries(formData.entries());
+        const savedTime = new Date().toLocaleString();
+
+        window.localStorage.setItem('farmSetupData', JSON.stringify(payload));
+        window.localStorage.setItem('farmSetupComplete', 'true');
+        window.localStorage.setItem('farmSetupSavedAt', savedTime);
+        setStatus(true, savedTime);
+        openSetupCompleteModal();
+      });
+
+      resetBtn?.addEventListener('click', () => {
+        if (formEl) formEl.reset();
+        window.localStorage.removeItem('farmSetupComplete');
+        window.localStorage.removeItem('farmSetupData');
+        window.localStorage.removeItem('farmSetupSavedAt');
+        setStatus(false);
+      });
+    });
+  </script>
+</body>
+</html>

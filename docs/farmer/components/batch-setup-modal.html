@@ -1,0 +1,248 @@
+<!-- Batch Setup Wizard Modal - Multi-step form for starting a new production cycle -->
+<div id="batchSetupModal" class="modal-overlay" style="display: none;">
+  <div class="modal-container batch-modal">
+    <!-- Modal Header -->
+    <div class="modal-header">
+      <h2>Start Production Cycle</h2>
+      <button type="button" class="modal-close" id="batchModalClose" aria-label="Close modal">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+    <!-- Modal Body with Steps -->
+    <div class="modal-body">
+      <!-- Step 1: Batch Information -->
+      <div class="wizard-step" id="step1" style="display: block;">
+        <div class="step-header">
+          <div class="step-indicator">1</div>
+          <div>
+            <h3>Batch Information</h3>
+            <p>Enter details about your new production cycle</p>
+          </div>
+        </div>
+
+        <form class="batch-form" id="batchForm">
+          <!-- Batch Name -->
+          <div class="form-group">
+            <label class="form-label required" for="batchName">Batch Name</label>
+            <div class="form-input-icon">
+              <span class="input-icon"><i class="fas fa-tag"></i></span>
+              <input
+                type="text"
+                id="batchName"
+                class="form-input"
+                placeholder="e.g., Batch #2024-001"
+                required
+              />
+            </div>
+            <span class="form-hint">Use a clear identifier for tracking</span>
+          </div>
+
+          <!-- Initial Pig Count -->
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label required" for="initialCount">Initial Pig Count</label>
+              <div class="form-input-icon">
+                <span class="input-icon"><i class="fas fa-piggy-bank"></i></span>
+                <input
+                  type="number"
+                  id="initialCount"
+                  class="form-input"
+                  placeholder="Number of pigs"
+                  min="1"
+                  required
+                />
+              </div>
+              <span class="form-hint">Total pigs at start of cycle</span>
+            </div>
+
+            <!-- Initial Weight (kg) -->
+            <div class="form-group">
+              <label class="form-label required" for="initialWeight">Initial Weight (kg)</label>
+              <div class="form-input-icon">
+                <span class="input-icon"><i class="fas fa-weight"></i></span>
+                <input
+                  type="number"
+                  id="initialWeight"
+                  class="form-input"
+                  placeholder="Average starting weight"
+                  min="0.1"
+                  step="0.1"
+                  required
+                />
+              </div>
+              <span class="form-hint">Average weight per pig in kg</span>
+            </div>
+          </div>
+
+          <!-- Target Market Weight -->
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label required" for="targetWeight">Target Market Weight (kg)</label>
+              <div class="form-input-icon">
+                <span class="input-icon"><i class="fas fa-bullseye"></i></span>
+                <input
+                  type="number"
+                  id="targetWeight"
+                  class="form-input"
+                  placeholder="Target selling weight"
+                  min="1"
+                  step="0.1"
+                  required
+                />
+              </div>
+              <span class="form-hint">Expected weight at market readiness</span>
+            </div>
+
+            <!-- Start Date -->
+            <div class="form-group">
+              <label class="form-label required" for="startDate">Start Date</label>
+              <div class="form-input-icon">
+                <span class="input-icon"><i class="fas fa-calendar"></i></span>
+                <input
+                  type="date"
+                  id="startDate"
+                  class="form-input"
+                  required
+                />
+              </div>
+              <span class="form-hint">First day of this batch</span>
+            </div>
+          </div>
+
+          <!-- Feed Type -->
+          <div class="form-group">
+            <label class="form-label" for="feedType">Feed Type (Optional)</label>
+            <select id="feedType" class="form-input form-select">
+              <option value="">Select feed type</option>
+              <option value="receiving">Receiving</option>
+              <option value="growing">Growing</option>
+              <option value="finishing">Finishing</option>
+              <option value="custom">Custom</option>
+            </select>
+            <span class="form-hint">Will be used for task recommendations</span>
+          </div>
+
+          <div class="form-alert" id="batchFormAlert" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+
+      <!-- Step 2: Review & Confirm -->
+      <div class="wizard-step" id="step2" style="display: none;">
+        <div class="step-header">
+          <div class="step-indicator">2</div>
+          <div>
+            <h3>Review Your Batch</h3>
+            <p>Confirm the batch details before creating</p>
+          </div>
+        </div>
+
+        <div class="batch-review">
+          <div class="review-card">
+            <div class="review-row">
+              <span class="review-label">Batch Name:</span>
+              <span class="review-value" id="reviewBatchName">—</span>
+            </div>
+            <div class="review-row">
+              <span class="review-label">Initial Count:</span>
+              <span class="review-value" id="reviewInitialCount">—</span>
+            </div>
+            <div class="review-row">
+              <span class="review-label">Starting Weight:</span>
+              <span class="review-value" id="reviewInitialWeight">— kg</span>
+            </div>
+            <div class="review-row">
+              <span class="review-label">Target Market Weight:</span>
+              <span class="review-value" id="reviewTargetWeight">— kg</span>
+            </div>
+            <div class="review-row">
+              <span class="review-label">Start Date:</span>
+              <span class="review-value" id="reviewStartDate">—</span>
+            </div>
+            <div class="review-row" id="reviewFeedTypeRow" style="display: none;">
+              <span class="review-label">Feed Type:</span>
+              <span class="review-value" id="reviewFeedType">—</span>
+            </div>
+          </div>
+
+          <div class="projection-preview">
+            <div class="preview-item">
+              <div class="preview-label">Projected Days to Market</div>
+              <div class="preview-value" id="projectedDays">—</div>
+              <div class="preview-info">Based on typical growth curve</div>
+            </div>
+            <div class="preview-item">
+              <div class="preview-label">Projected Total Feed (approx)</div>
+              <div class="preview-value" id="projectedFeed">—</div>
+              <div class="preview-info">Estimated feed intake per pig</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3: Success -->
+      <div class="wizard-step" id="step3" style="display: none;">
+        <div class="step-header success">
+          <div class="step-indicator success">
+            <i class="fas fa-check"></i>
+          </div>
+          <div>
+            <h3>Production Cycle Started!</h3>
+            <p>Your batch is ready for production logging and task management</p>
+          </div>
+        </div>
+
+        <div class="success-content">
+          <div class="success-message">
+            <i class="fas fa-check-circle"></i>
+            <div>
+              <p><strong id="successBatchName">Batch</strong> has been created successfully.</p>
+              <p style="font-size: 0.9rem; color: var(--neutral-500); margin-top: 0.5rem;">
+                <id="successTaskCount">0</id> daily tasks have been generated based on your batch configuration.
+              </p>
+            </div>
+          </div>
+
+          <div class="next-steps">
+            <div class="next-step-item">
+              <div class="next-step-icon">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <p><strong>View Growth Projection</strong><br/>Check the Gompertz curve and estimated market readiness date</p>
+            </div>
+            <div class="next-step-item">
+              <div class="next-step-icon">
+                <i class="fas fa-tasks"></i>
+              </div>
+              <p><strong>Start Logging Tasks</strong><br/>Record feed intake on tasks, then log weigh-ins and mortality in Production Logs</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Footer -->
+    <div class="modal-footer">
+      <button type="button" class="btn btn-ghost" id="batchModalCancel">Cancel</button>
+      <button type="button" class="btn btn-primary" id="batchModalNext" style="display: block;">Continue</button>
+      <button type="button" class="btn btn-primary" id="batchModalCreate" style="display: none;">Create Batch</button>
+      <button type="button" class="btn btn-primary" id="batchModalViewProjection" style="display: none;">View Growth Projection</button>
+    </div>
+
+    <!-- Progress Indicator -->
+    <div class="wizard-progress">
+      <div class="progress-step active" id="progressStep1">
+        <span>1</span>
+      </div>
+      <div class="progress-step" id="progressStep2">
+        <span>2</span>
+      </div>
+      <div class="progress-step" id="progressStep3">
+        <span>3</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Backdrop -->
+  <div class="modal-backdrop" id="batchModalBackdrop"></div>
+</div>

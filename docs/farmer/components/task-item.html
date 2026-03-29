@@ -1,0 +1,13 @@
+<!-- Task Item Component - Reusable task list item -->
+<!-- Usage: Repeat for each task in a list -->
+<div class="task-item {{completed}}" data-task>
+  <div class="task-checkbox {{checkedState}}"></div>
+  <div>
+    <div class="task-title">{{title}}</div>
+    <div class="task-meta">
+      <span class="task-priority {{priority}}">{{priorityLabel}}</span>
+      <span class="task-category">{{category}}</span>
+      <span class="task-detail">{{detail}}</span>
+    </div>
+  </div>
+</div>

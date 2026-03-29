@@ -1,0 +1,511 @@
+/* ============================================
+   Pricing Page Styles
+   ============================================ */
+
+/* ---------- Pricing Hero ---------- */
+.pricing-hero {
+  position: relative;
+  padding: calc(var(--nav-height) + var(--space-4xl)) 0 var(--space-2xl);
+  background: linear-gradient(160deg, #f8fdf9 0%, #f0fdf4 25%, #ecfdf5 50%, #f0f9ff 75%, #fefce8 100%);
+  overflow: hidden;
+}
+
+.pricing-hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.pricing-hero-bg .hero-orb-1 {
+  width: 400px;
+  height: 400px;
+  background: rgba(34, 197, 94, 0.12);
+  top: -15%;
+  right: 10%;
+}
+
+.pricing-hero-bg .hero-orb-2 {
+  width: 300px;
+  height: 300px;
+  background: rgba(59, 130, 246, 0.08);
+  bottom: -10%;
+  left: 5%;
+}
+
+.pricing-hero .container {
+  position: relative;
+  z-index: 1;
+}
+
+.gradient-text {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Billing Toggle */
+.billing-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+}
+
+.billing-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--neutral-400);
+  transition: all var(--transition-fast);
+}
+
+#monthlyLabel {
+  font-weight: 600;
+  color: var(--neutral-800);
+}
+
+/* ---------- Pricing Grid ---------- */
+.pricing-cards-section {
+  padding: var(--space-3xl) 0 var(--space-4xl);
+  margin-top: -1rem;
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-xl);
+  align-items: start;
+}
+
+.pricing-card {
+  background: white;
+  border: 1.5px solid var(--neutral-200);
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  transition: all var(--transition-base);
+  position: relative;
+}
+
+.pricing-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-xl);
+}
+
+.pricing-card-featured {
+  border-color: var(--primary-400);
+  box-shadow: var(--shadow-xl), var(--shadow-glow);
+  transform: scale(1.03);
+  z-index: 2;
+}
+
+.pricing-card-featured:hover {
+  transform: scale(1.03) translateY(-6px);
+}
+
+.pricing-card-badge {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--gradient-primary);
+  color: white;
+  padding: 4px 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  letter-spacing: 0.02em;
+}
+
+.pricing-card-header {
+  padding: var(--space-2xl) var(--space-2xl) var(--space-xl);
+  text-align: center;
+}
+
+.pricing-plan-name {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--neutral-800);
+  display: block;
+  margin-bottom: var(--space-xs);
+}
+
+.pricing-plan-desc {
+  font-size: 0.85rem;
+  color: var(--neutral-500);
+  display: block;
+  margin-bottom: var(--space-xl);
+}
+
+.pricing-price {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 2px;
+  margin-bottom: var(--space-xs);
+}
+
+.price-currency {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--neutral-500);
+  align-self: flex-start;
+  margin-top: 8px;
+}
+
+.price-amount {
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: var(--neutral-900);
+  line-height: 1;
+  transition: all var(--transition-fast);
+}
+
+.price-period {
+  font-size: 0.9rem;
+  color: var(--neutral-500);
+  font-weight: 500;
+}
+
+.pricing-price-note {
+  font-size: 0.8rem;
+  color: var(--neutral-400);
+}
+
+.pricing-card-body {
+  padding: 0 var(--space-2xl) var(--space-2xl);
+}
+
+/* Features List */
+.pricing-features-list {
+  margin-top: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.pricing-feature {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: 0.88rem;
+  color: var(--neutral-700);
+  padding: 6px 0;
+}
+
+.pricing-feature.disabled {
+  color: var(--neutral-400);
+}
+
+.feature-check {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(34, 197, 94, 0.1);
+  color: var(--primary-600);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.feature-check.featured {
+  background: var(--primary-500);
+  color: white;
+}
+
+.feature-x {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--neutral-100);
+  color: var(--neutral-400);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* ---------- Comparison Table Base ---------- */
+.comparison-table-wrap {
+  overflow-x: auto;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  background: #fff;
+  margin-top: var(--space-xl);
+}
+
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  background: #fff;
+}
+
+/* ---------- Pricing Compare Table ---------- */
+.pricing-compare-table {
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+
+.pricing-compare-table th {
+  font-size: 0.85rem;
+  padding: var(--space-lg) var(--space-xl);
+  background: var(--neutral-50);
+  border-bottom: 2px solid var(--neutral-200);
+}
+
+.pricing-compare-table th:first-child {
+  text-align: left;
+  min-width: 220px;
+}
+
+.pricing-compare-table .col-featured {
+  background: rgba(34, 197, 94, 0.04);
+}
+
+.pricing-compare-table thead th.col-featured {
+  background: rgba(34, 197, 94, 0.08);
+  color: var(--primary-700);
+  position: relative;
+}
+
+.pricing-compare-table thead th.col-featured::after {
+  content: 'Recommended';
+  display: block;
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--primary-500);
+  margin-top: 2px;
+}
+
+.pricing-compare-table td {
+  padding: var(--space-md) var(--space-xl);
+  text-align: center;
+  border-bottom: 1px solid var(--neutral-100);
+  color: var(--neutral-700);
+  font-size: 0.9rem;
+}
+
+.pricing-compare-table td:first-child {
+  text-align: left;
+  font-weight: 500;
+  color: var(--neutral-800);
+  min-width: 220px;
+}
+
+.pricing-compare-table td.col-featured {
+  background: rgba(34, 197, 94, 0.03);
+  font-weight: 500;
+}
+
+.pricing-compare-table tbody tr:hover {
+  background: var(--neutral-50);
+}
+
+.pricing-compare-table tbody tr:hover td.col-featured {
+  background: rgba(34, 197, 94, 0.06);
+}
+
+.pricing-compare-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.pricing-compare-table .check-yes {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(34, 197, 94, 0.1);
+  color: var(--primary-600);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.pricing-compare-table .check-no {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--neutral-100);
+  color: var(--neutral-300);
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+
+.category-row td {
+  background: var(--neutral-50) !important;
+  font-weight: 700;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--neutral-500);
+  padding: var(--space-sm) var(--space-xl);
+  border-bottom: 1px solid var(--neutral-200);
+  border-top: 1px solid var(--neutral-200);
+}
+
+/* ---------- FAQ ---------- */
+.faq-grid {
+  max-width: 740px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.faq-item {
+  background: white;
+  border: 1px solid var(--neutral-200);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  transition: all var(--transition-base);
+}
+
+.faq-item:hover {
+  border-color: var(--primary-200);
+}
+
+.faq-item.open {
+  border-color: var(--primary-300);
+  box-shadow: var(--shadow-md);
+}
+
+.faq-question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-lg) var(--space-xl);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--neutral-800);
+  text-align: left;
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+
+.faq-question:hover {
+  color: var(--primary-600);
+}
+
+.faq-icon {
+  font-size: 1.3rem;
+  color: var(--neutral-400);
+  transition: transform var(--transition-base);
+  line-height: 1;
+}
+
+.faq-item.open .faq-icon {
+  transform: rotate(45deg);
+  color: var(--primary-500);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--transition-slow), padding var(--transition-slow);
+}
+
+.faq-item.open .faq-answer {
+  max-height: 300px;
+}
+
+.faq-answer p {
+  padding: 0 var(--space-xl) var(--space-lg);
+  font-size: 0.9rem;
+  color: var(--neutral-600);
+  line-height: 1.7;
+}
+
+/* ---------- CTA Section ---------- */
+.cta-section {
+  padding-bottom: var(--space-4xl);
+}
+
+.cta-card {
+  position: relative;
+  background: var(--surface-dark);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-4xl);
+  text-align: center;
+  overflow: hidden;
+}
+
+.cta-bg-orbs {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.cta-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+}
+
+.cta-orb-1 {
+  width: 400px;
+  height: 400px;
+  background: rgba(34, 197, 94, 0.2);
+  top: -20%;
+  right: -10%;
+}
+
+.cta-orb-2 {
+  width: 300px;
+  height: 300px;
+  background: rgba(59, 130, 246, 0.12);
+  bottom: -20%;
+  left: -5%;
+}
+
+.cta-content {
+  position: relative;
+  z-index: 1;
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1024px) {
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .pricing-card-featured {
+    transform: none;
+  }
+
+  .pricing-card-featured:hover {
+    transform: translateY(-6px);
+  }
+}
+
+@media (max-width: 640px) {
+  .pricing-hero {
+    padding: calc(var(--nav-height) + var(--space-2xl)) 0 var(--space-xl);
+  }
+
+  .cta-card {
+    padding: var(--space-2xl);
+  }
+}

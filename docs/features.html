@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Features — IntelliSwine</title>
+  <meta name="description" content="Explore IntelliSwine features: task-driven workflows, Gompertz growth projection, efficiency metrics, alerts, and offline-first logging." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/features.css" />
+  <link rel="stylesheet" href="css/components/toast.css" />
+</head>
+<body>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav class="navbar scrolled" id="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="13" rx="9" ry="8"/><circle cx="9" cy="11" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="11" r="1" fill="currentColor" stroke="none"/><ellipse cx="12" cy="15.5" rx="3" ry="2"/><circle cx="10.5" cy="15.5" r="0.7" fill="currentColor" stroke="none"/><circle cx="13.5" cy="15.5" r="0.7" fill="currentColor" stroke="none"/><path d="M4 8c-1-3 1-5 3-4"/><path d="M20 8c1-3-1-5-3-4"/></svg></div>
+        IntelliSwine
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="features.html" class="active">Features</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="index.html#how-it-works">How It Works</a>
+        <a href="index.html#testimonials">Testimonials</a>
+      </div>
+      <div class="nav-actions" id="navActions">
+        <a href="login.html" class="btn btn-ghost">Log In</a>
+        <a href="register.html" class="btn btn-primary">Get Started</a>
+      </div>
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+
+  <!-- ========== FEATURES HERO ========== -->
+  <section class="features-hero">
+    <div class="features-hero-bg">
+      <div class="hero-orb hero-orb-1"></div>
+      <div class="hero-orb hero-orb-2"></div>
+    </div>
+    <div class="container">
+      <div class="section-header" style="position:relative; z-index:1;">
+        <span class="badge badge-dot" style="margin-bottom: 1rem;">Platform Features</span>
+        <h1 class="text-display">Practical Tools for<br/><span class="gradient-text">Grower-to-Finisher Farms</span></h1>
+        <p class="text-body-lg">Task-driven routines, growth projection, efficiency metrics, and offline logging built for real farm conditions.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FEATURE: AUTOMATED TASKS ========== -->
+  <section class="section feature-section" id="tasks">
+    <div class="container">
+      <div class="feature-row">
+        <div class="feature-info animate-on-scroll">
+          <span class="text-overline">Task Automation</span>
+          <h2 class="text-h2">Task-Driven Daily, Stage, and Milestone Work</h2>
+          <p class="text-body-lg">A rule-based engine creates the right tasks for each stage, guiding farmers step by step without complex planning.</p>
+          
+          <div class="feature-details">
+            <div class="feature-detail-item">
+              <div class="feature-detail-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg></div>
+              <div>
+                <strong>Daily Feeding & Water Checks</strong>
+                <p>Clear daily tasks based on batch age and stage so farmers stay consistent.</p>
+              </div>
+            </div>
+            <div class="feature-detail-item">
+              <div class="feature-detail-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 2 4 4"/><path d="m17 7 3-3"/><path d="M19 9 8.7 19.3c-1 1-2.5 1-3.4 0l-.6-.6c-1-1-1-2.5 0-3.4L15 5"/><path d="m9 11 4 4"/><path d="m5 19-3 3"/><path d="m14 4 6 6"/></svg></div>
+              <div>
+                <strong>Stage & Milestone Reminders</strong>
+                <p>Feed shifts, vaccinations, and weigh-ins are scheduled at the right time.</p>
+              </div>
+            </div>
+            <div class="feature-detail-item">
+              <div class="feature-detail-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m13 11 9-9"/><path d="m9.06 11.9 8.07-8.06a2.85 2.85 0 1 1 4.03 4.03l-8.06 8.08"/><path d="M7.07 14.94c-1.66 0-3 1.35-3 3.02 0 1.33-2.5 1.52-2 2.02 1.08 1.1 2.49 2.02 4 2.02 2.2 0 4-1.8 4-4.04a3.01 3.01 0 0 0-3-3.02Z"/></svg></div>
+              <div>
+                <strong>Health Checks & Pen Care</strong>
+                <p>Routine hygiene tasks and health observations are part of the daily checklist.</p>
+              </div>
+            </div>
+            <div class="feature-detail-item">
+              <div class="feature-detail-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg></div>
+              <div>
+                <strong>Planned Weigh Days</strong>
+                <p>Scheduled weigh-ins support growth projections without extra effort.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="feature-visual animate-on-scroll" style="animation-delay: 0.2s;">
+          <div class="feature-mockup">
+            <div class="mockup-header">
+              <span class="mockup-title"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.125em"><rect width="8" height="4" x="8" y="2" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4M12 16h4M8 11h.01M8 16h.01"/></svg> Today's Tasks</span>
+              <span class="badge">12/14 Complete</span>
+            </div>
+            <div class="mockup-body">
+              <div class="task-item completed">
+                <span class="task-check">✓</span>
+                <div class="task-info">
+                  <span class="task-name">Morning Feeding — Pen A</span>
+                  <span class="task-time">6:00 AM • Completed</span>
+                </div>
+                <span class="task-badge done">Done</span>
+              </div>
+              <div class="task-item completed">
+                <span class="task-check">✓</span>
+                <div class="task-info">
+                  <span class="task-name">Health Inspection — All Pens</span>
+                  <span class="task-time">7:30 AM • Completed</span>
+                </div>
+                <span class="task-badge done">Done</span>
+              </div>
+              <div class="task-item completed">
+                <span class="task-check">✓</span>
+                <div class="task-info">
+                  <span class="task-name">Pen Cleaning — Pen B, C</span>
+                  <span class="task-time">8:00 AM • Completed</span>
+                </div>
+                <span class="task-badge done">Done</span>
+              </div>
+              <div class="task-item active">
+                <span class="task-check pending">!</span>
+                <div class="task-info">
+                  <span class="task-name">Afternoon Feeding — All Pens</span>
+                  <span class="task-time">2:00 PM • Due Now</span>
+                </div>
+                <span class="task-badge pending">Pending</span>
+              </div>
+              <div class="task-item">
+                <span class="task-check pending-light">○</span>
+                <div class="task-info">
+                  <span class="task-name">Weekly Weight Recording</span>
+                  <span class="task-time">4:00 PM • Scheduled</span>
+                </div>
+                <span class="task-badge scheduled">Later</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FEATURE: ML PREDICTION ========== -->
+  <section class="section section-subtle feature-section" id="ml">
+    <div class="container">
+      <div class="feature-row reverse">
+        <div class="feature-info animate-on-scroll">
+          <span class="text-overline" style="color: var(--info);">Growth Modeling</span>
+          <h2 class="text-h2">Gompertz Projection & Performance Analytics</h2>
+          <p class="text-body-lg">Explainable growth curves and simple metrics turn daily logs into clear decisions.</p>
+
+          <div class="ml-models-grid">
+            <div class="ml-model-card">
+              <div class="ml-model-icon" style="background: rgba(34, 197, 94, 0.1); color: var(--primary-600);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div>
+              <h4>Gompertz Growth Curve</h4>
+              <p>Projects expected weight and highlights gaps between expected and actual growth.</p>
+              <span class="badge">Explainable Model</span>
+            </div>
+            <div class="ml-model-card">
+              <div class="ml-model-icon" style="background: rgba(249, 115, 22, 0.1); color: var(--accent-500);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8Z"/><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2Z"/></svg></div>
+              <h4>Efficiency Metrics</h4>
+              <p>Track ADG, FCR, ADFI, and EFI using simple daily inputs.</p>
+              <span class="badge badge-accent">ADG / FCR</span>
+            </div>
+            <div class="ml-model-card">
+              <div class="ml-model-icon" style="background: rgba(239, 68, 68, 0.1); color: var(--danger);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></div>
+              <h4>Rule-Based Alerts</h4>
+              <p>Flags mortality spikes, uniformity issues, missed tasks, and growth deviations.</p>
+              <span class="badge" style="background:rgba(239,68,68,0.08);color:var(--danger);border-color:rgba(239,68,68,0.2);">Alert Engine</span>
+            </div>
+            <div class="ml-model-card">
+              <div class="ml-model-icon" style="background: rgba(236, 72, 153, 0.1); color: #ec4899;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6"/><path d="M18.09 10.37A6 6 0 1 1 10.34 18"/><path d="M7 6h1v4"/><path d="m16.71 13.88.7.71-2.82 2.82"/></svg></div>
+              <h4>Market Readiness</h4>
+              <p>Estimates selling weight and expected market date from projections.</p>
+              <span class="badge" style="background:rgba(236,72,153,0.08);color:#ec4899;border-color:rgba(236,72,153,0.2);">Target Date</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="feature-visual animate-on-scroll" style="animation-delay: 0.2s;">
+          <div class="feature-mockup ml-mockup">
+            <div class="mockup-header" style="background: linear-gradient(135deg, #1e293b, #0f172a);">
+              <span class="mockup-title" style="color: rgba(255,255,255,0.8);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.125em"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M15 2v2M15 20v2M2 15h2M2 9h2M20 15h2M20 9h2M9 2v2M9 20v2"/></svg> Growth Insights</span>
+              <span class="badge badge-dark badge-dot">Live</span>
+            </div>
+            <div class="mockup-body" style="background: var(--surface-dark); color: white;">
+              <div class="ml-insight-card">
+                <div class="ml-insight-header">
+                  <span>Growth Projection</span>
+                  <span class="ml-accuracy">Gompertz Model</span>
+                </div>
+                <div class="ml-chart-area">
+                  <svg viewBox="0 0 300 80" class="ml-chart-svg">
+                    <defs>
+                      <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="rgba(34,197,94,0.3)" />
+                        <stop offset="100%" stop-color="rgba(34,197,94,0)" />
+                      </linearGradient>
+                    </defs>
+                    <path d="M0,70 Q30,65 60,55 T120,40 T180,28 T240,18 T300,8" fill="none" stroke="#22c55e" stroke-width="2.5"/>
+                    <path d="M0,70 Q30,65 60,55 T120,40 T180,28 T240,18 T300,8 L300,80 L0,80Z" fill="url(#chartGrad)"/>
+                    <circle cx="240" cy="18" r="4" fill="#22c55e"/>
+                  </svg>
+                </div>
+                <div class="ml-prediction-row">
+                  <div class="ml-pred-item">
+                    <span class="ml-pred-label">Current</span>
+                    <span class="ml-pred-value">74.2 kg</span>
+                  </div>
+                  <div class="ml-pred-item">
+                    <span class="ml-pred-label">7-Day Projection</span>
+                    <span class="ml-pred-value" style="color: var(--primary-400);">82.6 kg</span>
+                  </div>
+                  <div class="ml-pred-item">
+                    <span class="ml-pred-label">Target Weight</span>
+                    <span class="ml-pred-value">95 kg</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="ml-alert-item">
+                <span class="ml-alert-icon good"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></span>
+                <div>
+                  <strong>Efficiency Alert</strong>
+                  <p>FCR trending high. Review feed quality or adjust intake.</p>
+                </div>
+              </div>
+
+              <div class="ml-alert-item">
+                <span class="ml-alert-icon sell"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6"/><path d="M18.09 10.37A6 6 0 1 1 10.34 18"/><path d="M7 6h1v4"/><path d="m16.71 13.88.7.71-2.82 2.82"/></svg></span>
+                <div>
+                  <strong>Market Readiness</strong>
+                  <p>Projected market date: 12 days based on current growth.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FEATURE: OFFLINE PWA ========== -->
+  <section class="section feature-section" id="offline">
+    <div class="container">
+      <div class="feature-row">
+        <div class="feature-info animate-on-scroll">
+          <span class="text-overline" style="color: var(--accent-500);">Offline-First PWA</span>
+          <h2 class="text-h2">Works Everywhere, Even Without Internet</h2>
+          <p class="text-body-lg">Log feed, weight, and mortality offline. Syncs to the cloud once you are online again.</p>
+
+          <div class="feature-details">
+            <div class="feature-detail-item">
+              <div class="feature-detail-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" x2="2" y1="12" y2="12"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/><line x1="6" x2="6.01" y1="16" y2="16"/><line x1="10" x2="10.01" y1="16" y2="16"/></svg></div>
+              <div>
+                <strong>Local-First Storage</strong>
+                <p>All tasks and logs are stored on the device so work continues without signal.</p>
+              </div>
+            </div>
+            <div class="feature-detail-item">
+              <div class="feature-detail-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+              <div>
+                <strong>Fast App Loading</strong>
+                <p>Service workers keep the app responsive and ready in low-connectivity areas.</p>
+              </div>
+            </div>
+            <div class="feature-detail-item">
+              <div class="feature-detail-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg></div>
+              <div>
+                <strong>Auto-Sync When Online</strong>
+                <p>Data syncs when you reconnect, keeping multiple devices updated.</p>
+              </div>
+            </div>
+            <div class="feature-detail-item">
+              <div class="feature-detail-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg></div>
+              <div>
+                <strong>Installable on Any Device</strong>
+                <p>Add IntelliSwine to your home screen for a full-screen app experience.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="feature-visual animate-on-scroll" style="animation-delay: 0.2s;">
+          <div class="offline-demo">
+            <div class="phone-frame">
+              <div class="phone-notch"></div>
+              <div class="phone-screen">
+                <div class="phone-status-bar">
+                  <span>9:41</span>
+                  <div class="phone-status-icons">
+                    <span class="offline-indicator"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.125em"><path d="M2 20h.01"/><path d="M7 20v-4"/><path d="M12 20v-8"/><path d="M17 20V8"/></svg> Offline</span>
+                    <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.125em"><rect width="16" height="10" x="2" y="7" rx="2" ry="2"/><line x1="22" x2="22" y1="11" y2="13"/></svg></span>
+                  </div>
+                </div>
+                <div class="phone-app-header">
+                  <span style="font-weight:700; font-size:1rem;">IntelliSwine</span>
+                  <span class="badge" style="font-size:0.65rem; padding:2px 8px;">Offline Mode</span>
+                </div>
+                <div class="phone-content">
+                  <div class="phone-task completed-task">
+                    <span class="phone-task-check">✓</span>
+                    <span>Morning Feeding</span>
+                  </div>
+                  <div class="phone-task completed-task">
+                    <span class="phone-task-check">✓</span>
+                    <span>Health Check</span>
+                  </div>
+                  <div class="phone-task active-task">
+                    <span class="phone-task-check active">!</span>
+                    <span>Pen Cleaning</span>
+                  </div>
+                  <div class="phone-sync-badge">
+                    <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.125em"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg></span> 3 items pending sync
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FEATURE: EVIDENCE LOGGING ========== -->
+  <section class="section section-subtle feature-section" id="evidence">
+    <div class="container">
+      <div class="feature-row reverse">
+        <div class="feature-info animate-on-scroll">
+          <span class="text-overline" style="color: #a855f7;">Evidence-Based Logging</span>
+          <h2 class="text-h2">Photo Proof for Accountability (Coming Soon)</h2>
+          <p class="text-body-lg">Attach photo evidence to completed tasks to build a verifiable record of daily work.</p>
+
+          <div class="feature-details">
+            <div class="feature-detail-item">
+              <div class="feature-detail-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3Z"/><circle cx="12" cy="13" r="3"/></svg></div>
+              <div>
+                <strong>Simple Camera Capture</strong>
+                <p>Snap a photo after completing a task to record proof with time and date.</p>
+              </div>
+            </div>
+            <div class="feature-detail-item">
+              <div class="feature-detail-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 14 1.45-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.55 6a2 2 0 0 1-1.94 1.5H4a2 2 0 0 1-2-2V5c0-1.1.9-2 2-2h3.93a2 2 0 0 1 1.66.9l.82 1.2a2 2 0 0 0 1.66.9H18a2 2 0 0 1 2 2v2"/></svg></div>
+              <div>
+                <strong>Organized Evidence</strong>
+                <p>Photos are grouped by task and date for quick review.</p>
+              </div>
+            </div>
+            <div class="feature-detail-item">
+              <div class="feature-detail-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg></div>
+              <div>
+                <strong>Task Completion Proof</strong>
+                <p>Use images to support training, audits, and accountability.</p>
+              </div>
+            </div>
+            <div class="feature-detail-item">
+              <div class="feature-detail-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg></div>
+              <div>
+                <strong>Cloud Backup</strong>
+                <p>Images will sync when online so nothing is lost.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="feature-visual animate-on-scroll" style="animation-delay: 0.2s;">
+          <div class="feature-mockup evidence-mockup">
+            <div class="mockup-header">
+              <span class="mockup-title"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.125em"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3Z"/><circle cx="12" cy="13" r="3"/></svg> Task Evidence</span>
+              <span class="badge" style="background:rgba(168,85,247,0.08);color:#a855f7;border-color:rgba(168,85,247,0.2);">3 Captures</span>
+            </div>
+            <div class="mockup-body">
+              <div class="evidence-grid">
+                <div class="evidence-item">
+                  <div class="evidence-thumb"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="13" rx="9" ry="8"/><circle cx="9" cy="11" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="11" r="1" fill="currentColor" stroke="none"/><ellipse cx="12" cy="15.5" rx="3" ry="2"/></svg></div>
+                  <div class="evidence-info">
+                    <span class="evidence-task">Morning Feeding — Pen A</span>
+                    <span class="evidence-time">Today, 6:12 AM</span>
+                  </div>
+                  <span class="evidence-badge">✓ Verified</span>
+                </div>
+                <div class="evidence-item">
+                  <div class="evidence-thumb"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m13 11 9-9"/><path d="m9.06 11.9 8.07-8.06a2.85 2.85 0 1 1 4.03 4.03l-8.06 8.08"/><path d="M7.07 14.94c-1.66 0-3 1.35-3 3.02 0 1.33-2.5 1.52-2 2.02 1.08 1.1 2.49 2.02 4 2.02 2.2 0 4-1.8 4-4.04a3.01 3.01 0 0 0-3-3.02Z"/></svg></div>
+                  <div class="evidence-info">
+                    <span class="evidence-task">Pen Cleaning — Pen B</span>
+                    <span class="evidence-time">Today, 8:45 AM</span>
+                  </div>
+                  <span class="evidence-badge">✓ Verified</span>
+                </div>
+                <div class="evidence-item">
+                  <div class="evidence-thumb"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg></div>
+                  <div class="evidence-info">
+                    <span class="evidence-task">Weight Recording — Week 8</span>
+                    <span class="evidence-time">Today, 10:20 AM</span>
+                  </div>
+                  <span class="evidence-badge">✓ Verified</span>
+                </div>
+              </div>
+              <div class="evidence-stat-row">
+                <div class="evidence-stat">
+                  <span class="evidence-stat-val">147</span>
+                  <span class="evidence-stat-label">Total Captures</span>
+                </div>
+                <div class="evidence-stat">
+                  <span class="evidence-stat-val">98%</span>
+                  <span class="evidence-stat-label">Tasks with Evidence</span>
+                </div>
+                <div class="evidence-stat">
+                  <span class="evidence-stat-val">2.1 GB</span>
+                  <span class="evidence-stat-label">Storage Used</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== ARCHITECTURE ========== -->
+  <section class="section" id="architecture">
+    <div class="container">
+      <div class="section-header">
+        <span class="text-overline">System Architecture</span>
+        <h2 class="text-h2">Built on Proven, Practical Tech</h2>
+        <p class="text-body-lg">A simple, layered architecture that supports offline work and clear analytics.</p>
+      </div>
+
+      <div class="arch-grid animate-on-scroll">
+        <!-- Presentation Layer -->
+        <div class="arch-layer">
+          <div class="arch-layer-header" style="background: linear-gradient(135deg, rgba(34,197,94,0.1), rgba(34,197,94,0.04));">
+            <span class="arch-layer-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg></span>
+            <h3>Presentation Layer (PWA)</h3>
+          </div>
+          <div class="arch-layer-body">
+            <div class="arch-tech-tag">Service Workers</div>
+            <div class="arch-tech-tag">IndexedDB</div>
+            <div class="arch-tech-tag">MediaDevices API (Phase 2)</div>
+            <div class="arch-tech-tag">Responsive UI</div>
+          </div>
+        </div>
+
+        <div class="arch-connector">
+          <svg width="24" height="40" viewBox="0 0 24 40"><path d="M12 0v40M6 34l6 6 6-6" fill="none" stroke="var(--neutral-300)" stroke-width="2"/></svg>
+        </div>
+
+        <!-- Backend Layer -->
+        <div class="arch-layer">
+          <div class="arch-layer-header" style="background: linear-gradient(135deg, rgba(59,130,246,0.1), rgba(59,130,246,0.04));">
+            <span class="arch-layer-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" x2="6" y1="2" y2="4"/><line x1="10" x2="10" y1="2" y2="4"/><line x1="14" x2="14" y1="2" y2="4"/></svg></span>
+            <h3>Backend Layer (Java + Spring Boot)</h3>
+          </div>
+          <div class="arch-layer-body">
+            <div class="arch-tech-tag">Lifecycle Engine</div>
+            <div class="arch-tech-tag">Task Automation Engine</div>
+            <div class="arch-tech-tag">Event Trigger Engine</div>
+            <div class="arch-tech-tag">Authentication</div>
+            <div class="arch-tech-tag">RESTful APIs</div>
+          </div>
+        </div>
+
+        <div class="arch-connector">
+          <svg width="24" height="40" viewBox="0 0 24 40"><path d="M12 0v40M6 34l6 6 6-6" fill="none" stroke="var(--neutral-300)" stroke-width="2"/></svg>
+        </div>
+
+        <!-- ML Layer -->
+        <div class="arch-layer">
+          <div class="arch-layer-header" style="background: linear-gradient(135deg, rgba(249,115,22,0.1), rgba(249,115,22,0.04));">
+            <span class="arch-layer-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></span>
+            <h3>Growth Modeling Service</h3>
+          </div>
+          <div class="arch-layer-body">
+            <div class="arch-tech-tag">Gompertz Projection</div>
+            <div class="arch-tech-tag">ADG / FCR / ADFI / EFI</div>
+            <div class="arch-tech-tag">Rule-Based Alerts</div>
+            <div class="arch-tech-tag">Market Readiness</div>
+            <div class="arch-tech-tag">Explainable Models</div>
+            <div class="arch-tech-tag">Data Validation</div>
+          </div>
+        </div>
+
+        <div class="arch-connector">
+          <svg width="24" height="40" viewBox="0 0 24 40"><path d="M12 0v40M6 34l6 6 6-6" fill="none" stroke="var(--neutral-300)" stroke-width="2"/></svg>
+        </div>
+
+        <!-- Data Layer -->
+        <div class="arch-layer">
+          <div class="arch-layer-header" style="background: linear-gradient(135deg, rgba(168,85,247,0.1), rgba(168,85,247,0.04));">
+            <span class="arch-layer-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></svg></span>
+            <h3>Data Layer</h3>
+          </div>
+          <div class="arch-layer-body">
+            <div class="arch-tech-tag">PostgreSQL</div>
+            <div class="arch-tech-tag">IndexedDB (Client)</div>
+            <div class="arch-tech-tag">Cloud Image Storage (Phase 2)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA ========== -->
+  <section class="section cta-section">
+    <div class="container">
+      <div class="cta-card animate-on-scroll">
+        <div class="cta-bg-orbs">
+          <div class="cta-orb cta-orb-1"></div>
+          <div class="cta-orb cta-orb-2"></div>
+        </div>
+        <div class="cta-content">
+          <span class="badge badge-dark badge-dot" style="margin-bottom: 1rem;">Ready to Start?</span>
+          <h2 class="text-h1" style="color: white; margin-bottom: 1rem;">Try the Task-Driven Workflow</h2>
+          <p class="text-body-lg" style="color: rgba(255,255,255,0.6); max-width: 560px; margin: 0 auto 2rem;">
+            Start your free trial and see how daily tasks and growth projections simplify farm management.
+          </p>
+          <div class="cta-buttons">
+            <a href="register.html" class="btn btn-primary btn-lg" style="background: white; color: var(--primary-700); box-shadow: var(--shadow-xl);">
+              Start Free Trial
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+            <a href="pricing.html" class="btn btn-secondary btn-lg" style="border-color: rgba(255,255,255,0.2); color: white; background: rgba(255,255,255,0.08);">
+              View Pricing
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo">
+            <div class="logo-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="13" rx="9" ry="8"/><circle cx="9" cy="11" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="11" r="1" fill="currentColor" stroke="none"/><ellipse cx="12" cy="15.5" rx="3" ry="2"/><circle cx="10.5" cy="15.5" r="0.7" fill="currentColor" stroke="none"/><circle cx="13.5" cy="15.5" r="0.7" fill="currentColor" stroke="none"/><path d="M4 8c-1-3 1-5 3-4"/><path d="M20 8c1-3-1-5-3-4"/></svg></div>
+            IntelliSwine
+          </a>
+          <p>Task-driven swine production management with growth projection, efficiency metrics, and offline-first data capture.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Product</h4>
+          <a href="features.html">Features</a>
+          <a href="pricing.html">Pricing</a>
+          <a href="#">Documentation</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="#">About Us</a>
+          <a href="#">Blog</a>
+          <a href="#">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Cookie Policy</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 IntelliSwine. All rights reserved.</span>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="#" aria-label="Twitter"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M4 3h4l5 7 5-7h4L15 12l8 9h-4l-5.5-7L8 21H4l8-9.5z"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg></a>
+          <a href="#" aria-label="GitHub"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/utils/messages.js"></script>
+  <script src="js/auth/auth-storage.js"></script>
+  <script src="js/auth/auth-router.js"></script>
+  <script src="js/utils/api.js"></script>
+  <script src="js/utils/toast.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // Show toast notification if user is authenticated
+    document.addEventListener('DOMContentLoaded', () => {
+      if (AppAuthRouter.isAuthenticated()) {
+        AppToast.info('Welcome back! Continue to your dashboard.', {
+          actionText: 'Go to Dashboard',
+          onAction: () => {
+            window.location.href = 'farmer/pages/dashboard.html';
+          },
+          duration: 5000
+        });
+        
+        // Update nav buttons for authenticated users
+        const navActions = document.getElementById('navActions');
+        if (navActions) {
+          navActions.innerHTML = `
+            <a href="farmer/pages/dashboard.html" class="btn btn-primary">Dashboard</a>
+          `;
+        }
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Analytics - IntelliSwine</title>
+  <meta name="description" content="Growth projection and efficiency analytics for IntelliSwine." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../../css/styles.css" />
+  <link rel="stylesheet" href="../../css/dashboard.css" />
+  <link rel="stylesheet" href="../../css/components/card.css" />
+  <link rel="stylesheet" href="../../css/components/forms.css" />
+  <link rel="stylesheet" href="../../css/components/toast.css" />
+</head>
+<body class="dashboard-page">
+  <!-- Navbar component container -->
+  <div id="navbar-container"></div>
+
+  <div class="dashboard-layout">
+    <!-- Sidebar component container -->
+    <div id="sidebar-container"></div>
+
+    <main class="dashboard-main">
+      <div class="dashboard-header">
+        <div>
+          <h2>Analytics</h2>
+          <p>Gompertz projection and efficiency metrics for the active batch</p>
+        </div>
+        <button class="btn btn-secondary" type="button">Export</button>
+      </div>
+
+      <section class="analytics-hero">
+        <div class="dashboard-card analytics-chart-card">
+          <div class="analytics-chart-header">
+            <div>
+              <h3>Gompertz Growth Projection</h3>
+              <p>Projected weight curve compared with actual weigh-ins for the active batch.</p>
+            </div>
+            <div class="analytics-chart-meta">
+              <div class="meta-item">
+                <span class="meta-label">Current day</span>
+                <span class="meta-value">Day 38</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label">Avg weight</span>
+                <span class="meta-value">62.8 kg</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label">Target market</span>
+                <span class="meta-value">110 kg</span>
+              </div>
+            </div>
+          </div>
+          <div class="analytics-chart-body">
+            <div class="analytics-chart-canvas">
+              <canvas id="gompertzChart" height="240" aria-label="Gompertz growth projection chart" role="img"></canvas>
+            </div>
+            <div class="analytics-legend">
+              <div class="legend-item"><span class="legend-dot projected"></span>Projected growth</div>
+              <div class="legend-item"><span class="legend-dot actual"></span>Actual weigh-ins</div>
+              <div class="legend-item"><span class="legend-dot target"></span>Target band</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="stats-grid analytics-metrics">
+        <div class="stat-card">
+          <div class="stat-icon" style="background: rgba(59,130,246,0.12); color: var(--info);">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <div class="stat-content">
+            <h4>2.55</h4>
+            <p>Feed Conversion Ratio (FCR)</p>
+            <div class="stat-change up">Improving</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon" style="background: rgba(249,115,22,0.12); color: var(--accent-600);">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v4H3z"/><path d="M3 9h18v12H3z"/><path d="M7 13h4"/></svg>
+          </div>
+          <div class="stat-content">
+            <h4>2.34 <span>kg</span></h4>
+            <p>Average Daily Feed Intake (ADFI)</p>
+            <div class="stat-change">Stable</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon" style="background: rgba(34,197,94,0.12); color: var(--primary-600);">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg>
+          </div>
+          <div class="stat-content">
+            <h4>0.78 <span>kg</span></h4>
+            <p>Average Daily Gain (ADG)</p>
+            <div class="stat-change up">+4% vs last week</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon" style="background: rgba(22,163,74,0.12); color: var(--primary-700);">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l4 7h-8l4-7z"/><path d="M2 22l10-6 10 6"/></svg>
+          </div>
+          <div class="stat-content">
+            <h4>92%</h4>
+            <p>Efficiency Index (EFI)</p>
+            <div class="stat-change up">Within target</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="analytics-insight-grid">
+        <div class="dashboard-card analytics-insight-card performance-summary">
+          <div class="analytics-card-header">
+            <div>
+              <h4>Performance Summary</h4>
+              <p class="analytics-card-sub">Snapshot of growth signals from the past 7 days.</p>
+            </div>
+            <span class="status-pill status-good">On track</span>
+          </div>
+          <div class="insight-list">
+            <div class="insight-row">
+              <div>
+                <div class="insight-label">Growth deviation</div>
+                <div class="insight-value">Normal range</div>
+              </div>
+              <div class="insight-bar"><span style="width: 72%;"></span></div>
+            </div>
+            <div class="insight-row">
+              <div>
+                <div class="insight-label">Uniformity</div>
+                <div class="insight-value">92% of pigs within target band</div>
+              </div>
+              <div class="insight-bar"><span style="width: 92%;"></span></div>
+            </div>
+            <div class="insight-row">
+              <div>
+                <div class="insight-label">Market readiness</div>
+                <div class="insight-value">Estimated 28 days to target</div>
+              </div>
+              <div class="insight-bar"><span style="width: 64%;"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dashboard-card analytics-insight-card projection-notes">
+          <div class="analytics-card-header">
+            <div>
+              <h4>Projection Notes</h4>
+              <p class="analytics-card-sub">Model updates and alerts that affect the forecast.</p>
+            </div>
+            <span class="status-pill">2 updates</span>
+          </div>
+          <div class="notes-list">
+            <div class="note-item">
+              <div class="note-icon info">
+                <i class="fas fa-wave-square"></i>
+              </div>
+              <div>
+                <div class="note-title">Model recalibration</div>
+                <div class="note-text">Gompertz curve recalibrated with day 36 weigh-in.</div>
+                <div class="note-time">Today</div>
+              </div>
+            </div>
+            <div class="note-item">
+              <div class="note-icon warning">
+                <i class="fas fa-triangle-exclamation"></i>
+              </div>
+              <div>
+                <div class="note-title">Variance alert</div>
+                <div class="note-text">Growth variance wider than target range. Review feed plan.</div>
+                <div class="note-time">Yesterday</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Utilities and Components -->
+  <script src="../../js/utils/messages.js"></script>
+  <script src="../../js/utils/dom.js"></script>
+  <script src="../../js/utils/validators.js"></script>
+  <script src="../../js/auth/auth-storage.js"></script>
+  <script src="../../js/auth/auth-router.js"></script>
+  <script src="../../js/utils/api.js"></script>
+  <script src="../../js/utils/ui.js"></script>
+  <script src="../../js/main.js"></script>
+  <script src="../../js/farmer/dashboard.js"></script>
+
+  <!-- Component System -->
+  <script src="../../js/farmer/component-loader.js"></script>
+  <script src="../../js/components/form-handler.js"></script>
+  <script src="../../js/components/navbar.js"></script>
+  <script src="../../js/components/sidebar.js"></script>
+  <script src="../../js/components/card.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+  <!-- Page Initialization -->
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      // Require authentication
+      AppAuthRouter.requireAuth();
+      
+      // Load components
+      await window.AppComponentLoader.injectComponent('#navbar-container', '../../farmer/components/navbar.html');
+      await window.AppComponentLoader.injectComponent('#sidebar-container', '../../farmer/components/sidebar.html');
+      
+      // Initialize components
+      if (window.AppNavbar) window.AppNavbar.init();
+      if (window.AppSidebar) window.AppSidebar.init();
+      if (window.AppCard) window.AppCard.init();
+
+      const chartEl = document.getElementById('gompertzChart');
+      if (!chartEl || !window.Chart) return;
+
+      const targetWeight = 110;
+      const maxWeight = 125;
+      const A = 125;
+      const B = 2.6;
+      const K = 0.055;
+
+      const days = Array.from({ length: 121 }, (_, i) => i);
+      const projected = days.map(day => A * Math.exp(-Math.exp(B - K * day)));
+      const targetLow = days.map(() => targetWeight - 4);
+      const targetHigh = days.map(() => targetWeight + 4);
+
+      const actualDays = [0, 7, 14, 21, 28, 35, 38];
+      const actualWeights = [12, 18, 28, 39, 51, 60.5, 62.8];
+      const actualSeries = days.map((day) => {
+        const index = actualDays.indexOf(day);
+        return index === -1 ? null : actualWeights[index];
+      });
+
+      new Chart(chartEl, {
+        type: 'line',
+        data: {
+          labels: days,
+          datasets: [
+            {
+              label: 'Target band',
+              data: targetHigh,
+              borderColor: 'rgba(148, 163, 184, 0)',
+              backgroundColor: 'rgba(148, 163, 184, 0.2)',
+              pointRadius: 0,
+              fill: 1,
+              tension: 0.3
+            },
+            {
+              label: 'Target band',
+              data: targetLow,
+              borderColor: 'rgba(148, 163, 184, 0)',
+              backgroundColor: 'rgba(148, 163, 184, 0.2)',
+              pointRadius: 0,
+              fill: false,
+              tension: 0.3
+            },
+            {
+              label: 'Projected growth',
+              data: projected,
+              borderColor: '#16a34a',
+              backgroundColor: 'rgba(22, 163, 74, 0.12)',
+              borderWidth: 3,
+              pointRadius: 0,
+              tension: 0.35
+            },
+            {
+              label: 'Actual weigh-ins',
+              data: actualSeries,
+              borderColor: '#2563eb',
+              backgroundColor: '#2563eb',
+              borderWidth: 2,
+              pointRadius: 4,
+              pointHoverRadius: 5,
+              showLine: false
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          interaction: {
+            mode: 'nearest',
+            intersect: false,
+            axis: 'x'
+          },
+          scales: {
+            x: {
+              title: { display: true, text: 'Days on feed', color: '#64748b' },
+              grid: { color: 'rgba(226, 232, 240, 0.6)' },
+              ticks: { color: '#94a3b8', maxTicksLimit: 8 }
+            },
+            y: {
+              title: { display: true, text: 'Weight (kg)', color: '#64748b' },
+              min: 0,
+              max: maxWeight,
+              grid: { color: 'rgba(226, 232, 240, 0.6)' },
+              ticks: { color: '#94a3b8', maxTicksLimit: 6 }
+            }
+          },
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              enabled: true,
+              mode: 'nearest',
+              intersect: false,
+              filter: (item) => {
+                const label = item.dataset?.label;
+                return label === 'Projected growth' || label === 'Actual weigh-ins';
+              },
+              itemSort: (a, b) => b.parsed.y - a.parsed.y,
+              backgroundColor: '#0f172a',
+              titleColor: '#f8fafc',
+              bodyColor: '#e2e8f0',
+              borderColor: 'rgba(148, 163, 184, 0.3)',
+              borderWidth: 1
+            }
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>

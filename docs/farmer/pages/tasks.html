@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tasks - IntelliSwine</title>
+  <meta name="description" content="Daily task board for IntelliSwine batches." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../../css/styles.css" />
+  <link rel="stylesheet" href="../../css/dashboard.css" />
+  <link rel="stylesheet" href="../../css/components/card.css" />
+  <link rel="stylesheet" href="../../css/components/forms.css" />
+  <link rel="stylesheet" href="../../css/components/toast.css" />
+  <link rel="stylesheet" href="../../css/components/batch-modal.css" />
+</head>
+<body class="dashboard-page">
+  <!-- Navbar component container -->
+  <div id="navbar-container"></div>
+
+  <div class="dashboard-layout">
+    <!-- Sidebar component container -->
+    <div id="sidebar-container"></div>
+
+    <main class="dashboard-main">
+      <!-- Page Header -->
+      <div class="dashboard-header">
+        <div>
+          <h2>Daily Tasks & Feed Logs</h2>
+          <p id="batchInfo">Track today’s actions and log feed intake to keep the batch on schedule.</p>
+        </div>
+        <div class="topbar-actions">
+          <button class="btn btn-secondary" type="button" id="viewAllTasksBtn" title="View all production cycle tasks">
+            <i class="fas fa-list"></i>
+            View All Tasks
+          </button>
+          <button class="btn btn-secondary" type="button" id="filterBtn" disabled>
+            <i class="fas fa-filter"></i>
+            Filter
+          </button>
+        </div>
+      </div>
+
+      <!-- Step Progress Indicator with KPI -->
+      <div class="progress-card tasks-progress-card" id="progressCard">
+        <div class="progress-header">
+          <div class="progress-title">
+            <h3>Batch Progress</h3>
+            <p id="progressDescription">Starting your production cycle</p>
+          </div>
+          <div class="kpi-summary" id="kpiSummary">
+            <div class="kpi-item">
+              <span class="kpi-label">Current Day</span>
+              <span class="kpi-value" id="kpiDay">1</span>
+            </div>
+            <div class="kpi-divider"></div>
+            <div class="kpi-item">
+              <span class="kpi-label">Stage Progress</span>
+              <span class="kpi-value" id="kpiProgress">0%</span>
+            </div>
+            <div class="kpi-divider"></div>
+            <div class="kpi-item">
+              <span class="kpi-label">Tasks Completed</span>
+              <span class="kpi-value" id="kpiCompleted">0</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dynamically rendered stages (current + future only) -->
+        <div class="progress-stages"></div>
+
+        <!-- Current stage sub-stage progress -->
+        <div class="progress-bar-container">
+          <div class="progress-bar-fill" id="progressBarFill"></div>
+        </div>
+      </div>
+
+      <!-- Daily Tasks Card -->
+      <div class="task-section-card today-section" id="todaySection">
+        <div class="section-header today-section-header">
+          <div class="section-icon day-icon" aria-hidden="true">
+            <i class="fas fa-calendar-day"></i>
+          </div>
+          <div class="section-title">
+            <span class="section-kicker">Daily Checklist</span>
+            <h3>Today's Tasks</h3>
+            <span class="section-subtitle">Log feed intake or mark tasks complete for today.</span>
+          </div>
+          <div class="section-status">
+            <span class="section-badge" id="todayTaskCount">0</span>
+            <span class="section-subtitle" id="todayTaskStatus">0 pending</span>
+          </div>
+        </div>
+        <div class="task-table">
+          <div class="task-row task-row-header">
+            <div class="task-cell task-cell-task">Task</div>
+            <div class="task-cell">Priority</div>
+            <div class="task-cell">Category</div>
+            <div class="task-cell task-cell-actions">Actions</div>
+          </div>
+          <div id="todayTaskList" class="task-list"></div>
+        </div>
+        <div id="todayTaskEmpty" class="task-empty-state" hidden>
+          <i class="fas fa-check-circle"></i>
+          <p>All caught up for today!</p>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Task Data Modal -->
+  <div class="batch-modal" id="taskDataModal" aria-hidden="true">
+    <div class="batch-modal-overlay" data-modal-close></div>
+    <div class="batch-modal-content" role="dialog" aria-modal="true" aria-labelledby="taskModalTitle">
+      <div class="batch-modal-header">
+        <div>
+          <h3 id="taskModalTitle">Log Task Data</h3>
+          <p id="taskModalSubtitle">Capture daily production inputs for this task.</p>
+        </div>
+        <button class="batch-modal-close" type="button" data-modal-close aria-label="Close">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <form class="batch-modal-body" id="taskDataForm" autocomplete="off">
+        <div class="modal-fields">
+          <div class="input-grid">
+            <div class="form-group">
+              <label class="form-label required" for="modalFeedIntake">Feed intake (kg/pen)</label>
+              <input class="form-input" id="modalFeedIntake" type="number" min="0" step="0.1" placeholder="e.g., 2.2" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="modalFeedPhase">Feed phase</label>
+              <select id="modalFeedPhase" class="form-input form-select">
+                <option value="">Select phase</option>
+                <option value="receiving">Receiving</option>
+                <option value="growing">Growing</option>
+                <option value="finishing">Finishing</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="modalPhoto">Photo evidence</label>
+            <div class="photo-input">
+              <input class="form-input" id="modalPhoto" type="file" accept="image/*" multiple />
+              <span class="photo-hint">Upload feeding, pen checks, or weighing proof.</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="modalNotes">Notes</label>
+            <textarea class="form-input form-textarea" id="modalNotes" rows="3" placeholder="Optional notes"></textarea>
+          </div>
+        </div>
+        <div class="batch-modal-footer">
+          <button class="btn btn-secondary" type="button" data-modal-close>Cancel</button>
+          <button class="btn btn-primary" type="submit">
+            <i class="fas fa-save"></i>
+            Save Log
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Utilities and Components -->
+  <script src="../../js/utils/messages.js"></script>
+  <script src="../../js/utils/dom.js"></script>
+  <script src="../../js/utils/validators.js"></script>
+  <script src="../../js/auth/auth-storage.js"></script>
+  <script src="../../js/auth/auth-router.js"></script>
+  <script src="../../js/utils/api.js"></script>
+  <script src="../../js/utils/ui.js"></script>
+  <script src="../../js/main.js"></script>
+  <script src="../../js/farmer/dashboard.js"></script>
+
+  <!-- Component System -->
+  <script src="../../js/farmer/component-loader.js"></script>
+  <script src="../../js/components/form-handler.js"></script>
+  <script src="../../js/components/navbar.js"></script>
+  <script src="../../js/components/sidebar.js"></script>
+  <script src="../../js/components/card.js"></script>
+  <script src="../../js/farmer/tasks.js"></script>
+
+  <!-- Page Initialization -->
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      // Require authentication
+      AppAuthRouter.requireAuth();
+      
+      // Load components
+      await window.AppComponentLoader.injectComponent('#navbar-container', '../../farmer/components/navbar.html');
+      await window.AppComponentLoader.injectComponent('#sidebar-container', '../../farmer/components/sidebar.html');
+      
+      // Initialize components
+      if (window.AppNavbar) window.AppNavbar.init();
+      if (window.AppSidebar) window.AppSidebar.init();
+      if (window.AppCard) window.AppCard.init();
+    });
+  </script>
+</body>
+</html>

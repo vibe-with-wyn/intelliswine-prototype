@@ -1,0 +1,68 @@
+window.AppApi = (() => {
+  const API_BASE_KEY = 'apiBase';
+  const DEFAULT_API_BASE = 'http://localhost:8080';
+
+  function getApiBase() {
+    return window.localStorage.getItem(API_BASE_KEY) || DEFAULT_API_BASE;
+  }
+
+  async function post(path, payload, context) {
+    return request({ path, payload, context, requiresAuth: false });
+  }
+
+  async function postAuth(path, payload, context) {
+    return request({ path, payload, context, requiresAuth: true });
+  }
+
+  async function request({ path, payload, context, requiresAuth }) {
+    const token = window.AppAuthStorage?.getToken();
+    if (requiresAuth && !token) {
+      const error = new Error('You must be logged in to do that.');
+      error.tone = 'warning';
+      throw error;
+    }
+
+    let response;
+    try {
+      const headers = {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      };
+
+      if (requiresAuth && token) {
+        headers.Authorization = `Bearer ${token}`;
+      }
+
+      response = await fetch(`${getApiBase()}${path}`, {
+        method: 'POST',
+        headers,
+        body: JSON.stringify(payload)
+      });
+    } catch (err) {
+      const error = new Error(window.AppMessages?.GENERIC_NETWORK || 'Network error.');
+      error.tone = 'warning';
+      throw error;
+    }
+
+    if (response.status === 204) {
+      return null;
+    }
+
+    if (response.ok) {
+      return response.json();
+    }
+
+    const data = await window.AppMessages.parseJsonSafe(response);
+    const backendMessage = window.AppMessages.extractBackendMessage(data);
+    const errorInfo = window.AppMessages.humanize(response.status, backendMessage, context);
+    const error = new Error(errorInfo.message);
+    error.tone = errorInfo.tone;
+    throw error;
+  }
+
+  return {
+    getApiBase,
+    post,
+    postAuth
+  };
+})();
