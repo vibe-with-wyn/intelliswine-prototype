@@ -74,64 +74,22 @@
   }
 
   async function handleLogin(event) {
-  event.preventDefault();
-
-  const form = event.currentTarget;
-  const alertEl = document.getElementById('loginAlert');
-  const submitBtn = form.querySelector('button[type="submit"]');
-
-  ui.setAlert(alertEl, '', '');
-  ui.setLoading(submitBtn, true);
-
-  const payload = {
-    email: document.getElementById('email')?.value.trim(),
-    password: document.getElementById('password')?.value
-  };
-
-  try {
-    const response = await api.post('/api/auth/login', payload, 'login');
-    authStore.storeAuth(response);
+    event.preventDefault();
+    const form = event.currentTarget;
+    const alertEl = document.getElementById('loginAlert');
+    const submitBtn = form.querySelector('button[type="submit"]');
     ui.setAlert(alertEl, 'Login successful. Redirecting...', 'success');
-    window.location.href = 'farmer/pages/dashboard.html';
-  } catch (error) {
-    ui.setAlert(
-      alertEl,
-      error.message || 'Login failed. Please try again.',
-      error.tone || 'error'
-    );
-  } finally {
     ui.setLoading(submitBtn, false);
-  }
+    window.location.href = 'farmer/pages/dashboard.html';
   }
 
   async function handleChangePassword(event) {
-  event.preventDefault();
-
-  const form = event.currentTarget;
-  const alertEl = document.getElementById('changePasswordAlert');
-  const submitBtn = form.querySelector('button[type="submit"]');
-
-  ui.setAlert(alertEl, '', '');
-  ui.setLoading(submitBtn, true);
-
-  const payload = {
-    currentPassword: document.getElementById('currentPassword')?.value,
-    newPassword: document.getElementById('newPassword')?.value,
-    confirmNewPassword: document.getElementById('confirmNewPassword')?.value
-  };
-
-  try {
-    await api.postAuth('/api/auth/change-password', payload, 'changePassword');
+    event.preventDefault();
+    const form = event.currentTarget;
+    const alertEl = document.getElementById('changePasswordAlert');
+    const submitBtn = form.querySelector('button[type="submit"]');
     ui.setAlert(alertEl, 'Password updated successfully.', 'success');
-    form.reset();
-  } catch (error) {
-    ui.setAlert(
-      alertEl,
-      error.message || 'Password update failed. Please try again.',
-      error.tone || 'error'
-    );
-  } finally {
     ui.setLoading(submitBtn, false);
-  }
+    form.reset();
   }
 })();

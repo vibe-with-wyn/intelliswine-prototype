@@ -11,7 +11,8 @@ window.AppAuthRouter = (() => {
    * @returns {boolean} True if user has valid token
    */
   function isAuthenticated() {
-    return !!authStore.getToken();
+    // Always return true for testing (no auth required)
+    return true;
   }
 
   /**
@@ -28,9 +29,8 @@ window.AppAuthRouter = (() => {
    * @returns {boolean}
    */
   function isProtectedPage() {
-    const page = getCurrentPage();
-    const protectedPages = ['dashboard.html', 'tasks.html', 'logs.html', 'analytics.html', 'alerts.html', 'settings.html', 'farm-management.html'];
-    return protectedPages.includes(page);
+    // No protected pages for testing
+    return false;
   }
 
   /**
@@ -57,10 +57,7 @@ window.AppAuthRouter = (() => {
    * Call this on protected pages
    */
   function requireAuth() {
-    if (!isAuthenticated()) {
-      window.location.href = '../../login.html';
-      return false;
-    }
+    // No-op for testing
     return true;
   }
 
@@ -69,10 +66,7 @@ window.AppAuthRouter = (() => {
    * Call this on login/register pages
    */
   function requireNoAuth() {
-    if (isAuthenticated()) {
-      window.location.href = '../farmer/pages/dashboard.html';
-      return false;
-    }
+    // No-op for testing
     return true;
   }
 

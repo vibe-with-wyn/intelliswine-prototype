@@ -27,23 +27,11 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function setDashboardWelcome() {
-  const authStore = window.AppAuthStorage;
-  const user = authStore?.getUser?.();
   const nameEl = document.getElementById('dashboardUserName');
   const suffixEl = document.getElementById('dashboardHeroSuffix');
-
   if (!nameEl || !suffixEl) {
     return;
   }
-
-  const firstName = user?.firstName?.trim() || '';
-
-  if (firstName) {
-    nameEl.textContent = `${firstName}, `;
-    suffixEl.textContent = 'here is your batch overview';
-    return;
-  }
-
   nameEl.textContent = 'Here is your batch overview';
   suffixEl.textContent = '';
 }

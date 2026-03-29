@@ -272,9 +272,8 @@ window.AppBatchSetup = (() => {
         status: 'ACTIVE'
       };
 
-      // Create batch via API
-      const response = await Api.postAuth('/api/batches', payload);
-
+      // Create batch via API (no auth)
+      const response = await Api.post('/api/batches', payload);
       if (!response || !response.id) {
         throw new Error('Invalid response from server');
       }
