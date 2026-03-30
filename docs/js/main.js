@@ -142,19 +142,7 @@
   }
 
   function initAuthUi() {
-  const body = document.body;
-  const token = authStore?.getToken();
-
-  if (body.classList.contains('dashboard-page') && !token) {
-    window.location.href = 'login.html';
-    return;
-  }
-
-  if (body.classList.contains('auth-page') && token) {
-    window.location.href = 'farmer/pages/dashboard.html';
-    return;
-  }
-
+  // Prototype mode: do not gate or redirect pages based on auth state.
   }
 
 

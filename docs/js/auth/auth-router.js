@@ -8,10 +8,11 @@ window.AppAuthRouter = (() => {
 
   /**
    * Check if user is authenticated
-   * @returns {boolean} True if user has valid token
+   * Prototype mode: authentication is disabled
+   * @returns {boolean} Always true
    */
   function isAuthenticated() {
-    return !!authStore.getToken();
+    return true;
   }
 
   /**
@@ -53,26 +54,20 @@ window.AppAuthRouter = (() => {
   }
 
   /**
-   * Require authentication - redirect to login if not authenticated
+   * Require authentication
+   * Prototype mode: no route is gated
    * Call this on protected pages
    */
   function requireAuth() {
-    if (!isAuthenticated()) {
-      window.location.href = '../../login.html';
-      return false;
-    }
     return true;
   }
 
   /**
    * Redirect authenticated users away from auth pages to dashboard
+   * Prototype mode: auth pages remain accessible
    * Call this on login/register pages
    */
   function requireNoAuth() {
-    if (isAuthenticated()) {
-      window.location.href = '../farmer/pages/dashboard.html';
-      return false;
-    }
     return true;
   }
 
@@ -83,10 +78,7 @@ window.AppAuthRouter = (() => {
    * @returns {string} Either the original URL or redirect URL
    */
   function protectLink(protectedUrl, redirectUrl = '../../login.html') {
-    if (isAuthenticated()) {
-      return protectedUrl;
-    }
-    return redirectUrl;
+    return protectedUrl;
   }
 
   /**

@@ -16,11 +16,6 @@ window.AppApi = (() => {
 
   async function request({ path, payload, context, requiresAuth }) {
     const token = window.AppAuthStorage?.getToken();
-    if (requiresAuth && !token) {
-      const error = new Error('You must be logged in to do that.');
-      error.tone = 'warning';
-      throw error;
-    }
 
     let response;
     try {
