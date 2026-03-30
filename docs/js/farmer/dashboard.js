@@ -8,30 +8,26 @@ document.addEventListener('DOMContentLoaded', () => {
       checkbox?.classList.toggle('checked');
     });
   });
-
-  const sidebar = document.getElementById('sidebar');
-  const toggle = document.getElementById('sidebarToggle');
-  const overlay = document.getElementById('sidebarOverlay');
-
-  const closeSidebar = () => {
-    sidebar?.classList.remove('open');
-    overlay?.classList.remove('active');
-  };
-
-  toggle?.addEventListener('click', () => {
-    sidebar?.classList.toggle('open');
-    overlay?.classList.toggle('active');
-  });
-
-  overlay?.addEventListener('click', closeSidebar);
 });
 
 function setDashboardWelcome() {
+  const authStore = window.AppAuthStorage;
+  const user = authStore?.getUser?.();
   const nameEl = document.getElementById('dashboardUserName');
   const suffixEl = document.getElementById('dashboardHeroSuffix');
+
   if (!nameEl || !suffixEl) {
     return;
   }
+
+  const firstName = user?.firstName?.trim() || '';
+
+  if (firstName) {
+    nameEl.textContent = `${firstName}, `;
+    suffixEl.textContent = 'here is your batch overview';
+    return;
+  }
+
   nameEl.textContent = 'Here is your batch overview';
   suffixEl.textContent = '';
 }

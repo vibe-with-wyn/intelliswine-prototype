@@ -954,9 +954,9 @@ button {
 .gap-xl { gap: var(--space-xl); }
 
 .grid { display: grid; }
-.grid-2 { grid-template-columns: repeat(2, 1fr); }
-.grid-3 { grid-template-columns: repeat(3, 1fr); }
-.grid-4 { grid-template-columns: repeat(4, 1fr); }
+.grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 
 @media (max-width: 1024px) {
   .grid-4 { grid-template-columns: repeat(2, 1fr); }

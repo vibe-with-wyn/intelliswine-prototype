@@ -8,10 +8,10 @@ window.AppToast = (() => {
   const toastId = 'app-toast-container';
   const defaultDuration = 4000; // 4 seconds default
   const iconMap = {
-    success: 'fa-check-circle',
-    error: 'fa-exclamation-circle',
-    info: 'fa-info-circle',
-    warning: 'fa-exclamation-triangle'
+    success: '<svg class="toast-icon-svg" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"></circle><path d="M8.5 12.2l2.3 2.3 4.7-4.8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>',
+    error: '<svg class="toast-icon-svg" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"></circle><path d="M9.2 9.2l5.6 5.6M14.8 9.2l-5.6 5.6" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg>',
+    info: '<svg class="toast-icon-svg" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"></circle><path d="M12 10.8v5.2" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path><circle cx="12" cy="7.8" r="1.1" fill="currentColor"></circle></svg>',
+    warning: '<svg class="toast-icon-svg" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3.8l8.2 14.2c.5.9-.1 2-1.1 2H4.9c-1 0-1.6-1.1-1.1-2L12 3.8z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"></path><path d="M12 9v4.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path><circle cx="12" cy="16.9" r="1.1" fill="currentColor"></circle></svg>'
   };
 
   /**
@@ -51,23 +51,16 @@ window.AppToast = (() => {
     toast.className = `toast toast-${type}`;
 
     const icon = iconMap[type] || iconMap.info;
+    const isArrowAction = options.actionText?.trim() === '→';
+    const actionClass = isArrowAction ? 'toast-action toast-action-arrow' : 'toast-action';
+    const actionAriaLabel = options.actionAriaLabel || (isArrowAction ? 'Open dashboard' : options.actionText);
     
     // Build action button HTML if provided
     let actionHtml = '';
     if (options.actionText && options.onAction) {
       actionHtml = `
-        <button class="toast-action" type="button" aria-label="${options.actionText}">
+        <button class="${actionClass}" type="button" aria-label="${actionAriaLabel}">
           ${options.actionText}
-        </button>
-      `;
-    }
-
-    // Build close button
-    let closeHtml = '';
-    if (options.showClose !== false) {
-      closeHtml = `
-        <button class="toast-close" type="button" aria-label="Close notification">
-          <i class="fas fa-times"></i>
         </button>
       `;
     }
@@ -81,12 +74,11 @@ window.AppToast = (() => {
     toast.innerHTML = `
       <div class="toast-content">
         <span class="toast-icon">
-          <i class="fas ${icon}"></i>
+          ${icon}
         </span>
         <div class="toast-message">${escapeHtml(message)}</div>
       </div>
       ${actionHtml}
-      ${closeHtml}
       ${progressHtml}
     `;
 
@@ -95,13 +87,6 @@ window.AppToast = (() => {
       const actionBtn = toast.querySelector('.toast-action');
       actionBtn.addEventListener('click', () => {
         options.onAction();
-        removeToast(id, true);
-      });
-    }
-
-    if (options.showClose !== false) {
-      const closeBtn = toast.querySelector('.toast-close');
-      closeBtn.addEventListener('click', () => {
         removeToast(id, true);
       });
     }

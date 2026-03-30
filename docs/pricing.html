@@ -561,7 +561,7 @@
     document.addEventListener('DOMContentLoaded', () => {
       if (AppAuthRouter.isAuthenticated()) {
         AppToast.info('Welcome back! Continue to your dashboard.', {
-          actionText: 'Go to Dashboard',
+          actionText: '→',
           onAction: () => {
             window.location.href = 'farmer/pages/dashboard.html';
           },

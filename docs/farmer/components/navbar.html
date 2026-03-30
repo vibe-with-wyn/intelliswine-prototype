@@ -14,10 +14,13 @@
     </div>
 
     <div class="navbar-actions">
-      <div class="search-field">
+      <div class="search-field" id="navbarSearchField">
         <i class="fas fa-search"></i>
         <input type="text" placeholder="Search tasks, batches" />
       </div>
+      <button class="search-toggle-btn" id="mobileSearchToggle" type="button" aria-label="Open search" aria-expanded="false" aria-controls="navbarSearchField">
+        <i class="fas fa-search"></i>
+      </button>
       <button class="icon-button" type="button" aria-label="Notifications">
         <i class="fas fa-bell"></i>
         <span class="notify-dot"></span>

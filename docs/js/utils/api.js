@@ -10,19 +10,29 @@ window.AppApi = (() => {
     return request({ path, payload, context, requiresAuth: false });
   }
 
-  // postAuth is disabled for testing (no auth required)
   async function postAuth(path, payload, context) {
-    return request({ path, payload, context, requiresAuth: false });
+    return request({ path, payload, context, requiresAuth: true });
   }
 
   async function request({ path, payload, context, requiresAuth }) {
-    // Ignore requiresAuth for testing
+    const token = window.AppAuthStorage?.getToken();
+    if (requiresAuth && !token) {
+      const error = new Error('You must be logged in to do that.');
+      error.tone = 'warning';
+      throw error;
+    }
+
     let response;
     try {
       const headers = {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
       };
+
+      if (requiresAuth && token) {
+        headers.Authorization = `Bearer ${token}`;
+      }
+
       response = await fetch(`${getApiBase()}${path}`, {
         method: 'POST',
         headers,

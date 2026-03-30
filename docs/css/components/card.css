@@ -147,8 +147,7 @@
   }
 
   .stat-card {
-    flex-direction: column;
-    text-align: center;
+    padding: 1rem;
   }
 
   .card-grid,
@@ -159,5 +158,12 @@
 
   .dashboard-card.expanded {
     grid-column: 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .stat-card {
+    flex-direction: column;
+    text-align: center;
   }
 }

@@ -54,14 +54,38 @@ window.AppSidebar = (() => {
    * Hydrate sidebar footer profile from stored auth user
    */
   function hydrateUserProfile() {
-    // No user profile for testing
+    const user = Auth?.getUser?.();
+    if (!user) return;
+
+    const profileAvatar = Dom.query('#sidebarProfileAvatar');
+    const profileName = Dom.query('#sidebarProfileName');
+    const profileEmail = Dom.query('#sidebarProfileEmail');
+
+    if (profileAvatar && user.firstName) {
+      const initials = (user.firstName[0] + (user.lastName?.[0] || '')).toUpperCase();
+      Dom.text(profileAvatar, initials);
+    }
+
+    if (profileName && user.firstName) {
+      Dom.text(profileName, `${user.firstName} ${user.lastName || ''}`.trim());
+    }
+
+    if (profileEmail && user.email) {
+      Dom.text(profileEmail, user.email);
+    }
   }
 
   /**
    * Setup sidebar sign out button
    */
   function setupLogout() {
-    // No logout for testing
+    const logoutBtn = Dom.query('#sidebarSignOutBtn');
+    if (!logoutBtn || !Auth) return;
+
+    Dom.on(logoutBtn, 'click', () => {
+      Auth.clear();
+      window.location.href = '../../login.html';
+    });
   }
 
   return {

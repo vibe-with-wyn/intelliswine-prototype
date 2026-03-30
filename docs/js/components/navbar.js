@@ -12,6 +12,7 @@ window.AppNavbar = (() => {
    */
   function init() {
     setupSearch();
+    setupMobileSearchToggle();
     setupStartBatchAction();
   }
 
@@ -27,6 +28,70 @@ window.AppNavbar = (() => {
       // TODO: Implement search functionality
       console.log('Search query:', query);
     });
+  }
+
+  function setupMobileSearchToggle() {
+    const toggle = Dom.query('#mobileSearchToggle');
+    const navbarActions = Dom.query('.navbar-actions');
+    const searchInput = Dom.query('.search-field input');
+
+    if (!toggle || !navbarActions) return;
+
+    const mobileQuery = window.matchMedia('(max-width: 768px)');
+
+    const closeSearch = () => {
+      Dom.removeClass(navbarActions, 'search-open');
+      toggle.setAttribute('aria-expanded', 'false');
+    };
+
+    const openSearch = () => {
+      Dom.addClass(navbarActions, 'search-open');
+      toggle.setAttribute('aria-expanded', 'true');
+      searchInput?.focus();
+    };
+
+    Dom.on(toggle, 'click', (event) => {
+      if (!mobileQuery.matches) {
+        return;
+      }
+
+      event.preventDefault();
+      event.stopPropagation();
+
+      if (Dom.hasClass(navbarActions, 'search-open')) {
+        closeSearch();
+      } else {
+        openSearch();
+      }
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!mobileQuery.matches) {
+        return;
+      }
+
+      if (!navbarActions.contains(event.target)) {
+        closeSearch();
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        closeSearch();
+      }
+    });
+
+    const handleViewportChange = () => {
+      if (!mobileQuery.matches) {
+        closeSearch();
+      }
+    };
+
+    if (typeof mobileQuery.addEventListener === 'function') {
+      mobileQuery.addEventListener('change', handleViewportChange);
+    } else {
+      mobileQuery.addListener(handleViewportChange);
+    }
   }
 
   function setupStartBatchAction() {
